@@ -1,6 +1,6 @@
 import './App.css';
-import GridBlock from './Components/GridBlock'; 
-import GridLayout from './Components/GridLayout';
+import GridBlock from './Components/GridBlockComponent'; 
+import GridLayout from './Components/GridLayoutComponent';
 
 function App() {
   return (
