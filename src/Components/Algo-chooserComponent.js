@@ -10,7 +10,7 @@ class Chooser extends Component {
                     <Form>
                         <FormGroup>
                             <Input type='select' name='algo' value=''>
-                                <option>Algorithm 1</option>
+                                <option>Algo chooser</option>
                             </Input>
                         </FormGroup>
                     </Form>
@@ -18,7 +18,7 @@ class Chooser extends Component {
             </div>
         </Jumbotron>
        );
-   } 
+   }
 }
 
 export default Chooser;
