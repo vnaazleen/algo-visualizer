@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import GridBlock from './GridBlockComponent';
+import Header from './HeaderComponent';
+import Chooser from './Algo-chooserComponent';
 
 export default class GridLayout extends Component {
 
     constructor(props){
-        super();
+        super(props);
         this.state={
             boxes:[]
         }
@@ -33,24 +35,29 @@ export default class GridLayout extends Component {
         console.log(boxes);
 
         return (
-            <div className="grid-container">
-{            console.log(this.state.boxes)
-}                
-                {
-                
-                boxes.map((row,pos) => {
-                    return(
-                    <div className="grid-row" key={`r-${pos}`}>
-                    {row.map((c,pos2) => {
-                        console.log(c.strt)
-                        return( <GridBlock key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
+            <div>
+
+                <Header></Header>
+                <Chooser/>
+
+                <div className="grid-container">
+                      {/* console.log(this.state.boxes); */}
+                    {
                     
-                }
-                    </div>
-                    );
-                })
-                }  
-                
+                    boxes.map((row,pos) => {
+                        return(
+                        <div className="grid-row" key={`r-${pos}`}>
+                        {row.map((c,pos2) => {
+                            console.log(c.strt)
+                            return( <GridBlock key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
+                        
+                    }
+                        </div>
+                        );
+                    })
+                    }  
+                    
+                </div>
             </div>
         )
     }

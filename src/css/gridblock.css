@@ -3,22 +3,38 @@
     height: 20px;
     width: 20px;
     display: inline-block;
-    padding: 0px;
     margin:0px;
+    padding: 0px;
+    position: relative;
 }
 .grid-container{
     margin:100px 0px 0px;
 }
 
+/* .icon::before{
+    display: inline-block;
+    font-style:normal;
+    font-variant:normal;
+    text-rendering: auto;
+    -webkit-font-smoothing:antialiased;
+} */
 .grid-row {
     margin: 0px !important;
     padding: 0px;
     display: flex;
     justify-content: center;
 }
-.start-node{
-    background: green;
+/* .start-node::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight:900;
+    content:"\f192";
 }
+
 .end-node{
     background:red;
+} */
+
+.fa {
+    display: flex !important;
+    justify-content: center;
 }

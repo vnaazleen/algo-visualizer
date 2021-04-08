@@ -3,14 +3,17 @@ import '../css/gridblock.css';
 
 export default class GridBlockComponent extends Component {
     constructor(props){
-        super();
+        super(props);
 
 
     }
     render() {
         console.log(this.props.start);
-
+        const st = <i className="fa fa-chevron-right"></i>
+        const ed = <i className="fa fa-circle"></i>
         return (
+            
+
             <>
     
                <div className={`grid-block
@@ -20,6 +23,9 @@ export default class GridBlockComponent extends Component {
                `}
                
                >
+                   { this.props.start ? st:'' }
+                   { this.props.end ? ed:'' }
+
                 
                 </div>
             </>
