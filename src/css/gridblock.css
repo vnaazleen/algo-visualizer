@@ -1,0 +1,9 @@
+.grid-block{
+    border: 1.5px gray ridge;
+    height: 20px;
+    width: 5% !important;
+    /* width: 100px !important; */
+    display: inline-grid;
+    padding: 0px;
+    margin: 0px;
+}
