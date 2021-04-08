@@ -29,10 +29,9 @@ export default class GridLayout extends Component {
 
         return (
             <div>
-{            console.log(this.state.boxes)
-}                
+                { console.log(this.state.boxes)}
                 {
-                
+
                 boxes.map((row,pos) => {
                     return(
                     <div key={`c-${pos}`}>
@@ -40,8 +39,8 @@ export default class GridLayout extends Component {
                     </div>
                     );
                 })
-                }  
-                
+                }
+
             </div>
         )
     }
