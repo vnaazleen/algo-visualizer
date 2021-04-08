@@ -1,9 +1,24 @@
 .grid-block{
     border: 1.5px gray ridge;
     height: 20px;
-    width: 5% !important;
-    /* width: 100px !important; */
-    display: inline-grid;
+    width: 20px;
+    display: inline-block;
     padding: 0px;
-    margin: 0px;
+    margin:0px;
+}
+.grid-container{
+    margin:100px 0px 0px;
+}
+
+.grid-row {
+    margin: 0px !important;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+.start-node{
+    background: green;
+}
+.end-node{
+    background:red;
 }
