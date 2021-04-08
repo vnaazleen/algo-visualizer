@@ -33,14 +33,9 @@ export default class GridLayout extends Component {
         console.log(boxes);
 
         return (
-<<<<<<< HEAD:src/Components/GridLayout.js
-            <div>
-                { console.log(this.state.boxes)}
-=======
             <div className="grid-container">
 {            console.log(this.state.boxes)
-}                
->>>>>>> b71e44c7a92b14a0d1e654159f0e6e3f94b28ff8:src/Components/GridLayoutComponent.js
+}
                 {
 
                 boxes.map((row,pos) => {
@@ -49,7 +44,7 @@ export default class GridLayout extends Component {
                     {row.map((c,pos2) => {
                         console.log(c.strt)
                         return( <GridBlock key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
-                    
+
                 }
                     </div>
                     );
