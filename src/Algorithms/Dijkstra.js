@@ -16,9 +16,12 @@ export function dijkstra (grid, startNode, finishNode) {
     sortNodesByDistance(unvisitedNodes);
     const nearestNode = unvisitedNodes.shift();
 
+    if (nearestNode.distance === Infinity) return visitedNodesInOrder;
+
     // else we visit the node
     nearestNode.isVisited = true;
     visitedNodesInOrder.push(nearestNode);
+    //console.log(nearestNode);
 
     // check if it is our destination
     if (nearestNode === finishNode) {
@@ -71,7 +74,6 @@ export function getNodesInShortestPathOrder(finishNode) {
   const nodesInShortestPathOrder = [];
   let currentNode = finishNode;
   while (currentNode !== null) {
-    console.log(currentNode);
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode;
   }

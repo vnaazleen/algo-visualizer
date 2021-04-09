@@ -22,8 +22,8 @@ export default class GridLayout extends Component {
                 const val = {
                     row,
                     col,
-                    strt: row===0 && col===0,
-                    end: row===13 && col===13,
+                    strt: row===10 && col===10,
+                    end: row===13 && col===45,
                     distance: Infinity,
                     isVisited: false,
                     previousNode: null,
@@ -50,8 +50,8 @@ export default class GridLayout extends Component {
     animateDijkstra(visitedNodes, shortestPath) {
 
       // if we reach the finish node
-      for (let i = 0; i < shortestPath.length; i++) {
-        if (i === visitedNodes.length) {
+      for (let i = 0; i < visitedNodes.length; i++) {
+        if (i === visitedNodes.length - 1) {
           setTimeout(() => {
             this.animateShortestPath(shortestPath);
           }, 10 * i);
@@ -70,8 +70,8 @@ export default class GridLayout extends Component {
     visualizeDijkstra() {
       const {boxes} = this.state;
       // TO-D0 : start & finish are static for now
-      const start = boxes[0][0];
-      const finish = boxes[13][13];
+      const start = boxes[10][10];
+      const finish = boxes[13][45];
 
       // apply dijkstra and get shortest part
       const visitedNodes = dijkstra(boxes, start, finish);
@@ -89,7 +89,6 @@ export default class GridLayout extends Component {
             <div>
 
                 <Header></Header>
-                <Chooser/>
 
                 <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
 
