@@ -3,6 +3,8 @@ import GridBlock from './GridBlockComponent';
 import Header from './HeaderComponent';
 import Chooser from './Algo-chooserComponent';
 import {dijkstra, getNodesInShortestPathOrder} from '../Algorithms/Dijkstra';
+import {bfs} from '../Algorithms/bfs';
+
 
 export default class GridLayout extends Component {
 
@@ -43,7 +45,7 @@ export default class GridLayout extends Component {
           const node = nodesInShortestPathOrder[i];
           document.getElementById(`node-${node.row}-${node.col}`).className =
             'node node-shortest-path';
-        }, 50 * i);
+        },  10 * i);
       }
     }
 
@@ -67,6 +69,29 @@ export default class GridLayout extends Component {
     }
 
 
+
+    animateBfs(visitedNodes, shortestPath) {
+
+      // if we reach the finish node
+      for (let i = 0; i < visitedNodes.length; i++) {
+        if (i === visitedNodes.length - 1) {
+          setTimeout(() => {
+            this.animateShortestPath(shortestPath);
+          }, 10 * i);
+          return;
+        }
+
+        setTimeout(() => {
+        const node = visitedNodes[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          'node node-visited';
+        }, 10 * i);
+      }
+    }
+
+
+
+
     visualizeDijkstra() {
       const {boxes} = this.state;
       // TO-D0 : start & finish are static for now
@@ -75,10 +100,26 @@ export default class GridLayout extends Component {
 
       // apply dijkstra and get shortest part
       const visitedNodes = dijkstra(boxes, start, finish);
+
       console.log(visitedNodes);
       const shortestPath = getNodesInShortestPathOrder(finish);
 
       this.animateDijkstra(visitedNodes, shortestPath);
+    }
+
+    visuaizeBFS() {
+      const {boxes} = this.state;
+
+      const start = boxes[10][10];
+      const finish = boxes[13][45];
+      const visitedNodes = bfs(boxes,start,finish);
+      console.log(visitedNodes);
+
+      const shortestPath = getNodesInShortestPathOrder(finish);
+      console.log(shortestPath);
+
+      this.animateBfs(visitedNodes, shortestPath);
+
     }
 
 
@@ -89,9 +130,11 @@ export default class GridLayout extends Component {
             <div>
 
                 <Header></Header>
-
+              <div className="row container">
                 <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
 
+                <button onClick={() => this.visuaizeBFS()}> BFS Algorithm </button>
+              </div>
                 <div className="grid-container">
                       {/* console.log(this.state.boxes); */}
                     {
@@ -100,7 +143,7 @@ export default class GridLayout extends Component {
                         return(
                         <div className="grid-row" key={`r-${pos}`}>
                         {row.map((c,pos2) => {
-                            console.log(c.strt)
+                            
                             return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
 
                     }

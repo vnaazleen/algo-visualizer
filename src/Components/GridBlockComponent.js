@@ -8,7 +8,6 @@ export default class GridBlockComponent extends Component {
 
     }
     render() {
-        console.log(this.props.start);
         const st = <i className="fa fa-chevron-right"></i>
         const ed = <i className="fa fa-circle"></i>
         return (
