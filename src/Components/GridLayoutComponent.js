@@ -11,7 +11,8 @@ export default class GridLayout extends Component {
     constructor(props){
         super(props);
         this.state={
-            boxes:[]
+            boxes:[],
+            isMousePressed:false
         }
     }
 
@@ -29,6 +30,7 @@ export default class GridLayout extends Component {
                     distance: Infinity,
                     isVisited: false,
                     previousNode: null,
+                    iswall:false
                 };
                 currRow.push(val);
             }
@@ -53,6 +55,7 @@ export default class GridLayout extends Component {
                   distance: Infinity,
                   isVisited: false,
                   previousNode: null,
+                  iswall:false
               };
               currRow.push(val);
               document.getElementById(`node-${row}-${col}`).className = '';
@@ -161,6 +164,47 @@ export default class GridLayout extends Component {
     }
 
 
+    handleMouseDown(row,col) {
+      console.log("Down");
+      const newgrid  = this.getNewGridWithWall(this.state.boxes,row,col);
+      this.setState({
+        boxes:newgrid,
+        isMousePressed:true
+      });
+
+    }
+
+    handleMouseEnter(row,col){
+      console.log("Enter");
+
+      if( ! this.state.isMousePressed ) return;
+      
+      const newGrid = this.getNewGridWithWall(this.state.boxes,row,col);
+      this.setState({boxes:newGrid});
+    }
+
+    handleMouseUp(){
+      console.log("Up");
+
+      this.setState({isMousePressed:false});
+    }
+
+
+    getNewGridWithWall(grid,row,col){
+      const newGrid = grid.slice();
+      const node = newGrid[row][col];
+      const newNode = {
+        ...node,
+        iswall: !node.iswall,
+        isVisited: !node.isVisited
+      };
+      console.log(newNode)
+
+      newGrid[row][col] = newNode;
+      return newGrid;
+    }
+
+
     render() {
         const {boxes} = this.state;
 
@@ -194,7 +238,13 @@ export default class GridLayout extends Component {
                           // console.log("col"+c.isVisited)
 
                             
-                            return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
+                            return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end} mouseIsPressed={this.state.isMousePressed} iswall={c.iswall}
+                            
+                            onMouseDown ={(row,col) => this.handleMouseDown(row,col)}
+                            onMouseEnter = {(row,col) => this.handleMouseEnter(row,col)}
+                            onMouseUp={() => this.handleMouseUp()}
+                            
+                            ></GridBlock>)})
 
                     }
                         </div>
