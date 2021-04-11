@@ -15,7 +15,7 @@ export default class GridLayout extends Component {
         }
     }
 
-    componentDidMount(){
+    gridRender(){
         const b=[];
         for(let row=0;row<15;row++){
             const currRow=[];
@@ -34,9 +34,47 @@ export default class GridLayout extends Component {
             }
             b.push(currRow)
         }
-        this.setState({
-            boxes:b
-        })
+
+      return b;
+    }
+
+
+    gridRerender(){
+      const b=[];
+      for(let row=0;row<15;row++){
+          const currRow=[];
+          for(let col=0;col<50;col++){
+
+              const val = {
+                  row,
+                  col,
+                  strt: row===10 && col===10,
+                  end: row===13 && col===45,
+                  distance: Infinity,
+                  isVisited: false,
+                  previousNode: null,
+              };
+              currRow.push(val);
+              document.getElementById(`node-${row}-${col}`).className = '';
+          }
+          b.push(currRow)
+      }
+
+    return b;
+  }
+
+    componentDidMount(){
+      let val= this.gridRender();
+      this.setState({
+        boxes:val
+      })
+    }
+
+    clearGrid() {
+      let val= this.gridRerender();
+      this.setState({
+        boxes:val
+      });
     }
 
     animateShortestPath(nodesInShortestPathOrder) {
@@ -131,18 +169,30 @@ export default class GridLayout extends Component {
 
                 <Header></Header>
               <div className="row container">
+
                 <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
 
                 <button onClick={() => this.visuaizeBFS()}> BFS Algorithm </button>
+
+                <button onClick={() => this.clearGrid()} > Clear Grid </button>
+
               </div>
-                <div className="grid-container">
-                      {/* console.log(this.state.boxes); */}
+
+              <div className="grid-container">
+                      {/* console.log(this.state.boxes); */
+                        // console.log("render")
+                      }
                     {
 
                     boxes.map((row,pos) => {
                         return(
                         <div className="grid-row" key={`r-${pos}`}>
+                          {/* {console.log("row"+row.isVisited)} */}
+
                         {row.map((c,pos2) => {
+
+                          // console.log("col"+c.isVisited)
+
                             
                             return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
 
@@ -152,8 +202,9 @@ export default class GridLayout extends Component {
                     })
                     }
 
-                </div>
-            </div>
+              </div>
+
+          </div>
         )
     }
 }
