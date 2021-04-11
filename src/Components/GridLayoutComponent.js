@@ -4,6 +4,7 @@ import Header from './HeaderComponent';
 import Chooser from './Algo-chooserComponent';
 import {dijkstra, getNodesInShortestPathOrder} from '../Algorithms/Dijkstra';
 import {bfs} from '../Algorithms/bfs';
+import {dfs} from '../Algorithms/dfs';
 
 
 export default class GridLayout extends Component {
@@ -127,8 +128,25 @@ export default class GridLayout extends Component {
       }
     }
 
+    animateDfs(visitedNodes) {
 
+      // if we reach the finish node
+      for (let i = 0; i < visitedNodes.length; i++) {
+        if (i === visitedNodes.length - 1) {
+          setTimeout(() => {
+            console.log(visitedNodes);
+            this.animateShortestPath(visitedNodes);
+          }, 10 * i);
+          return;
+        }
 
+        setTimeout(() => {
+        const node = visitedNodes[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          'node node-visited';
+        }, 10 * i);
+      }
+    }
 
     visualizeDijkstra() {
       const {boxes} = this.state;
@@ -160,6 +178,17 @@ export default class GridLayout extends Component {
 
     }
 
+    visuaizeDFS() {
+      console.log('Started dfs');
+      const {boxes} = this.state;
+
+      const start = boxes[10][10];
+      const finish = boxes[13][45];
+      const visitedNodes = dfs(boxes,start,finish);
+      this.animateDfs(visitedNodes);
+
+    }
+
 
     render() {
         const {boxes} = this.state;
@@ -173,6 +202,8 @@ export default class GridLayout extends Component {
                 <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
 
                 <button onClick={() => this.visuaizeBFS()}> BFS Algorithm </button>
+
+                <button onClick={() => this.visuaizeDFS()}> DFS Algorithm </button>
 
                 <button onClick={() => this.clearGrid()} > Clear Grid </button>
 
@@ -193,7 +224,7 @@ export default class GridLayout extends Component {
 
                           // console.log("col"+c.isVisited)
 
-                            
+
                             return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end}></GridBlock>)})
 
                     }
