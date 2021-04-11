@@ -5,6 +5,7 @@ import Chooser from './Algo-chooserComponent';
 import {dijkstra, getNodesInShortestPathOrder} from '../Algorithms/Dijkstra';
 import {bfs} from '../Algorithms/bfs';
 import {dfs} from '../Algorithms/dfs';
+import {greedyBFS} from '../Algorithms/greedybfs';
 
 
 export default class GridLayout extends Component {
@@ -179,12 +180,22 @@ export default class GridLayout extends Component {
     }
 
     visuaizeDFS() {
-      console.log('Started dfs');
       const {boxes} = this.state;
 
       const start = boxes[10][10];
       const finish = boxes[13][45];
       const visitedNodes = dfs(boxes,start,finish);
+      this.animateDfs(visitedNodes);
+
+    }
+
+    visuaizeGBFS() {
+      console.log('Started gbfs');
+      const {boxes} = this.state;
+
+      const start = boxes[10][10];
+      const finish = boxes[13][45];
+      const visitedNodes = greedyBFS(boxes,start,finish);
       this.animateDfs(visitedNodes);
 
     }
@@ -200,6 +211,8 @@ export default class GridLayout extends Component {
               <div className="row container">
 
                 <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
+
+                <button onClick={() => this.visuaizeGBFS()}> GBFS Algorithm </button>
 
                 <button onClick={() => this.visuaizeBFS()}> BFS Algorithm </button>
 

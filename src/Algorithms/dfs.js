@@ -3,7 +3,6 @@ import {getAllNodes} from './Dijkstra';
 
 export function dfs(grid, start, finish) {
     let stack = []
-    const allnodes = getAllNodes(grid);
     const visitedNodes = [];
 
     stack.push(start);
