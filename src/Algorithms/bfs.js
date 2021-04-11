@@ -2,7 +2,7 @@ import {getAllNodes} from './Dijkstra';
 import {getUnvisitedNeighbours} from './Dijkstra';
 
 export function bfs (grid,start,finish) {
-    
+
     let queue = [];
     const allnodes = getAllNodes(grid);
     const visitedNodes = [];
@@ -17,57 +17,23 @@ export function bfs (grid,start,finish) {
     while(!!allnodes.length){
 
         const current = queue.shift();
-        // console.log(current);
-
         const neigh = getUnvisitedNeighboursBfs(current,grid);
-        // console.log(neigh)
-        // let idx = 0;
-
         short=[]
-        
+
         updateUnvisitedNeighbors(current,grid);
 
 
         for(let i=0;i<neigh.length;i++){
                 neigh[i].isVisited = true;
                 queue.push(neigh[i]);
-                
-                
-                // neighbors.push(neigh[i]);
-                
                 short.push(neigh[i])
                 if(neigh[i] === finish){
                     return neighbors;
                 }
         }
-
         neighbors = [...neighbors,...short]
-
-
-
-        // console.log(queue);
-        
-
-        // for(let i=0;i<=neigh.length;i++)
-
-
-
-    //     for(let j=0; j<neighbors.length;j++)
-    //     {
-            
-    //         const node = neighbors.shift();
-        
-    //         node.isVisited= true;
-    //         // visitedNodes.push(node);
-
-            
-    //         neighbors[j].isVisited=true;
-
-            
-    // }
-        
     }
-    
+
 
 }
 

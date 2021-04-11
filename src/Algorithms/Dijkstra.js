@@ -11,7 +11,6 @@ export function dijkstra (grid, startNode, finishNode) {
   const unvisitedNodes = getAllNodes(grid);
 
   startNode.distance = 0;
-  console.log(startNode)
   while(!!unvisitedNodes.length) {
     // get the next most promising node
     sortNodesByDistance(unvisitedNodes);
