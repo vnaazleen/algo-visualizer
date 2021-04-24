@@ -33,12 +33,9 @@ export default class GridLayout extends Component {
                     distance: Infinity,
                     isVisited: false,
                     previousNode: null,
-<<<<<<< HEAD
-=======
                     isBbfs:false,
                     iswall:false,
                     aDis:0
->>>>>>> 31941ef4ae6ea25b2db3970383cbea90125d1663
                 };
                 currRow.push(val);
             }
@@ -63,13 +60,9 @@ export default class GridLayout extends Component {
                   distance: Infinity,
                   isVisited: false,
                   previousNode: null,
-<<<<<<< HEAD
-=======
                   iswall:false,
                   isBbfs:false,
                   aDis:0
-
->>>>>>> 31941ef4ae6ea25b2db3970383cbea90125d1663
               };
               currRow.push(val);
               document.getElementById(`node-${row}-${col}`).className = '';
@@ -429,9 +422,6 @@ export default class GridLayout extends Component {
       this.animateDijkstra(visitedNodes, shortestPath);
     }
 
-
-<<<<<<< HEAD
-=======
     handleMouseDown(row,col) {
       console.log("Down");
       const newgrid  = this.getNewGridWithWall(this.state.boxes,row,col);
@@ -472,8 +462,6 @@ export default class GridLayout extends Component {
       return newGrid;
     }
 
-
->>>>>>> 31941ef4ae6ea25b2db3970383cbea90125d1663
     render() {
         const {boxes} = this.state;
 
