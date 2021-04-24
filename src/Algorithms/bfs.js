@@ -56,3 +56,5 @@ function getUnvisitedNeighboursBfs(node, grid) {
     if (col < grid[0].length - 1) neighbors.push(grid[row][col + 1]);
     return neighbors.filter(neighbor => !neighbor.isVisited);
   }
+
+  
