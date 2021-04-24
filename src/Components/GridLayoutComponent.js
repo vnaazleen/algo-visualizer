@@ -64,7 +64,6 @@ export default class GridLayout extends Component {
                   iswall:false,
                   isBbfs:false,
                   aDis:0
-
               };
               currRow.push(val);
               document.getElementById(`node-${row}-${col}`).className = '';
@@ -150,7 +149,7 @@ export default class GridLayout extends Component {
   }
 
   prime(num){
-    
+
     if(num===1){
       return false
     }
@@ -165,7 +164,7 @@ export default class GridLayout extends Component {
   }
 
   even(num){
-    
+
     if(num%2 ===0 ){
       return true;
     }
@@ -183,7 +182,7 @@ export default class GridLayout extends Component {
     })
   }
 
-  
+
 
   verticalSkew() {
     if(this.state.boxes !== []){
@@ -317,7 +316,7 @@ export default class GridLayout extends Component {
         this.clearStyles();
         this.clearGridForNewAlgo();
       }
-      
+
       const {boxes} = this.state;
       // TO-D0 : start & finish are static for now
       const start = boxes[10][10];
@@ -367,7 +366,7 @@ export default class GridLayout extends Component {
 
       const shortestPath2 = getNodesInShortestPathOrderBbfs(visitedNodes[1]);
       const shortestPath1 = getNodesInShortestPathOrderBbfs(visitedNodes[2]);
-      
+
 
       console.log(shortestPath1,shortestPath2);
 
@@ -385,7 +384,7 @@ export default class GridLayout extends Component {
       const start = boxes[10][10];
       const finish = boxes[13][45];
       const visitedNodes = dfs(boxes,start,finish);
-      this.animateDfs(visitedNodes);      
+      this.animateDfs(visitedNodes);
     }
 
     visuaizeGBFS() {
@@ -408,7 +407,7 @@ export default class GridLayout extends Component {
         this.clearStyles();
         this.clearGridForNewAlgo();
       }
-      
+
       const {boxes} = this.state;
       // TO-D0 : start & finish are static for now
       const start = boxes[10][10];
@@ -418,12 +417,11 @@ export default class GridLayout extends Component {
       const visitedNodes = aSearch(boxes, start, finish);
 
       console.log(visitedNodes);
-      
+
       const shortestPath = getNodesInShortestPathOrder(finish);
 
       this.animateDijkstra(visitedNodes, shortestPath);
     }
-
 
     handleMouseDown(row,col) {
       console.log("Down");
@@ -439,7 +437,7 @@ export default class GridLayout extends Component {
       console.log("Enter -"+row +'-'+col);
 
       if( ! this.state.isMousePressed ) return;
-      
+
       const newGrid = this.getNewGridWithWall(this.state.boxes,row,col);
       this.setState({boxes:newGrid});
     }
@@ -464,7 +462,6 @@ export default class GridLayout extends Component {
       newGrid[row][col] = newNode;
       return newGrid;
     }
-
 
     render() {
         const {boxes} = this.state;
@@ -511,13 +508,13 @@ export default class GridLayout extends Component {
 
                           // console.log("col"+c.isVisited)
 
-                            
+
                             return( <GridBlock row={pos} col={pos2} key={`${pos}-${pos2}`} start={c.strt} end={c.end} mouseIsPressed={this.state.isMousePressed} iswall={c.iswall}
-                            
+
                             onMouseDown ={(row,col) => this.handleMouseDown(row,col)}
                             onMouseEnter = {(row,col) => this.handleMouseEnter(row,col)}
                             onMouseUp={() => this.handleMouseUp()}
-                            
+
                             ></GridBlock>)})
 
                     }
