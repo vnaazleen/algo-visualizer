@@ -15,8 +15,7 @@ export default class GridLayout extends Component {
     constructor(props){
         super(props);
         this.state={
-            boxes:[],
-            isMousePressed:false
+            boxes:[]
         }
     }
 
@@ -331,7 +330,7 @@ export default class GridLayout extends Component {
       this.animateDijkstra(visitedNodes, shortestPath);
     }
 
-    visuaizeBFS() {
+     visuaizeBFS() {
       if(this.state.boxes !== []){
         this.clearStyles();
         this.clearGridForNewAlgo();
@@ -430,6 +429,7 @@ export default class GridLayout extends Component {
         boxes:newgrid,
         isMousePressed:true
       });
+      document.getElementById(`node-${row}-${col}`).className = 'node-wall';
 
     }
 
@@ -437,7 +437,6 @@ export default class GridLayout extends Component {
       console.log("Enter -"+row +'-'+col);
 
       if( ! this.state.isMousePressed ) return;
-
       const newGrid = this.getNewGridWithWall(this.state.boxes,row,col);
       this.setState({boxes:newGrid});
     }
@@ -458,7 +457,6 @@ export default class GridLayout extends Component {
         isVisited: !node.isVisited
       };
       console.log(newNode)
-
       newGrid[row][col] = newNode;
       return newGrid;
     }
@@ -469,7 +467,15 @@ export default class GridLayout extends Component {
         return (
             <div>
 
-                <Header></Header>
+                <Header dijkstra={()=>this.visualizeDijkstra()}
+                        bfs={() => this.visuaizeBFS()}
+                        gbfs={() => this.visuaizeGBFS()}
+                        dfs={() => this.visuaizeDFS()}
+                        bbfs={() => this.visualizeBBFS()}
+                        astar={() => this.visualizeaSearch()}
+                        clearGrid={() => this.clearGrid()}
+                        randomGrid={() => this.randomGrid()}
+                ></Header>
 
               <div className="row container">
 
