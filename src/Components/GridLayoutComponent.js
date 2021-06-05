@@ -15,9 +15,12 @@ export default class GridLayout extends Component {
     constructor(props){
         super(props);
         this.state={
-            boxes:[]
+            boxes:[],
+            
         }
     }
+
+    
 
     gridRender(){
         const b=[];
@@ -115,35 +118,36 @@ export default class GridLayout extends Component {
 
   randomGridGeneration(){
     const b=[]
-    for(let row=0;row<15;row++){
-      const c=[];
-      for(let col=0;col<50;col++){
-        const ran = Math.floor(Math.random()*5+1);
-        const box= this.state.boxes;
+    if(!this.state.running){
+      for(let row=0;row<15;row++){
+        const c=[];
+        for(let col=0;col<50;col++){
+          const ran = Math.floor(Math.random()*5+1);
+          const box= this.state.boxes;
 
 
-        const node = box[row][col];
+          const node = box[row][col];
 
-        const val = {
-            row,
-            col,
-            strt: node.strt,
-            end: node.end,
-            distance: Infinity,
-            aDis:0,
-            aEndDis:0,
-            isVisited: !this.prime(ran) && !node.strt && !node.end ? true : false ,
-            previousNode: null,
-            iswall: !this.prime(ran) && !node.strt && !node.end ? true : false
-        };
-        if(!this.prime(ran) && !node.strt && !node.end){
-          document.getElementById(`node-${row}-${col}`).className = 'node-wall';
+          const val = {
+              row,
+              col,
+              strt: node.strt,
+              end: node.end,
+              distance: Infinity,
+              aDis:0,
+              aEndDis:0,
+              isVisited: !this.prime(ran) && !node.strt && !node.end ? true : false ,
+              previousNode: null,
+              iswall: !this.prime(ran) && !node.strt && !node.end ? true : false
+          };
+          if(!this.prime(ran) && !node.strt && !node.end){
+            document.getElementById(`node-${row}-${col}`).className = 'node-wall';
+          }
+            c.push(val);
         }
-          c.push(val);
+        b.push(c)
       }
-      b.push(c)
     }
-
     return b;
   }
 
@@ -206,10 +210,17 @@ export default class GridLayout extends Component {
     }
 
     clearGrid() {
-      let val= this.gridRerender();
-      this.setState({
-        boxes:val
-      });
+      if(!this.state.running){
+        console.log(this.state.running);
+        let val= this.gridRerender();
+        this.setState({
+          boxes:val
+        });
+      }
+      else{
+       prompt("Algo is running"); 
+      }
+      
     }
 
     clearGridForNewAlgo(){
@@ -315,6 +326,7 @@ export default class GridLayout extends Component {
         this.clearStyles();
         this.clearGridForNewAlgo();
       }
+      
 
       const {boxes} = this.state;
       // TO-D0 : start & finish are static for now
@@ -328,6 +340,10 @@ export default class GridLayout extends Component {
       const shortestPath = getNodesInShortestPathOrder(finish);
 
       this.animateDijkstra(visitedNodes, shortestPath);
+
+      console.log("running true");
+        
+      console.log('running false')
     }
 
      visuaizeBFS() {

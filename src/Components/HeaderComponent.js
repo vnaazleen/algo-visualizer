@@ -101,10 +101,11 @@ class Header extends Component{
                                         <option value='A*'>A star</option>
                                     </Input>
                                 </FormGroup>
-                                <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
-                                <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>clearGrid</button>
+                                
                                 <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                             </Form>
+                            <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
+                            <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>clearGrid</button>
 
                         
                     </div>
