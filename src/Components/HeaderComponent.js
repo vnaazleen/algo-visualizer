@@ -70,10 +70,11 @@ class Header extends Component{
                         <NavbarToggler onClick={this.togglefunc}/>
 
                         <div>
-
                             <NavbarBrand className="mr-auto" href="/">
                                 <img height="70px" src= {Img} alt="Algo-Visualizer" />
                             </NavbarBrand>
+                            <br/>
+                            <br/>
 
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
@@ -87,11 +88,12 @@ class Header extends Component{
                                         <option value='A*'>A star</option>
                                     </Input>
                                 </FormGroup>
+                                <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                                 <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
                                 <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>clearGrid</button>
-                                <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                             </Form>
                         </div>
+
                     </div>
                 </Navbar>
                     
