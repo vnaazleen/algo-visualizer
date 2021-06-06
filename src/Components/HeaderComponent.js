@@ -1,6 +1,7 @@
 import react,{Component} from 'react';
 import {Nav,NavLink,NavbarToggler,NavbarBrand,Collapse, NavItem,Button , Navbar,Jumbotron,Form, FormGroup, Input} from 'reactstrap';
 import { visuaizeBFS,visualizeDijkstra } from "./GridLayoutComponent";
+import Img from '../images/logo.png'
 
 class Header extends Component{
     constructor(props){
@@ -9,9 +10,6 @@ class Header extends Component{
         this.state = {
             isNavOpen:false,
             algo:'',
-            // dijkstra:visualizeDijkstra(),
-            // bfs:visuaizeBFS(),
-            name:null
         }
 
         this.togglefunc = this.togglefunc.bind(this);
@@ -67,28 +65,16 @@ class Header extends Component{
 
         return(
             <div>
-                <Navbar dark expand="md" className="nav-bg">
+                <Navbar className="nav-bg">
                     <div className="container row">
                         <NavbarToggler onClick={this.togglefunc}/>
 
-                            <NavbarBrand className="mr-auto" href="/">
-                                Alog - Visualizer
-                            </NavbarBrand>
-                    </div>
+                        <div>
 
-                    {/* <Collapse isOpen={this.state.isNavOpen} className="collapse navbar-collapse">
-                        <Nav className="ml-auto">
-                            <NavItem className="navbar-nav">
-                                <NavLink className="nav-link" to="/"> Home </NavLink>
-                                <NavLink className="nav-link" to="/"> About </NavLink>
-                            </NavItem>
-                        </Nav>
-                    </Collapse> */}
-                </Navbar>
-                
-                <Navbar className='nav-bg1'>
-                    <div className="container row">
-                        
+                            <NavbarBrand className="mr-auto" href="/">
+                                <img height="70px" src= {Img} alt="Algo-Visualizer" />
+                            </NavbarBrand>
+
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Input type='select' className="select" name='algo' onChange={(e) => this.setState({ algo: e.target.value })}>
@@ -105,11 +91,8 @@ class Header extends Component{
                                 <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>clearGrid</button>
                                 <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                             </Form>
-
-                        
+                        </div>
                     </div>
-
-
                 </Navbar>
                     
             </div>

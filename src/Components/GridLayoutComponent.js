@@ -21,9 +21,9 @@ export default class GridLayout extends Component {
 
     gridRender(){
         const b=[];
-        for(let row=0;row<15;row++){
+        for(let row=0;row<20;row++){
             const currRow=[];
-            for(let col=0;col<50;col++){
+            for(let col=0;col<60;col++){
 
                 const val = {
                     row,
@@ -48,9 +48,9 @@ export default class GridLayout extends Component {
 
     gridRerender(){
       const b=[];
-      for(let row=0;row<15;row++){
+      for(let row=0;row<20;row++){
           const currRow=[];
-          for(let col=0;col<50;col++){
+          for(let col=0;col<60;col++){
 
               const val = {
                   row,
@@ -87,9 +87,9 @@ export default class GridLayout extends Component {
 
   generateNewGridWithPreviousWalls(){
     const b=[];
-      for(let row=0;row<15;row++){
+      for(let row=0;row<20;row++){
           const currRow=[];
-          for(let col=0;col<50;col++){
+          for(let col=0;col<60;col++){
               const boxes = this.state.boxes;
               const node = boxes[row][col];
               const val = {
@@ -115,9 +115,9 @@ export default class GridLayout extends Component {
 
   randomGridGeneration(){
     const b=[]
-    for(let row=0;row<15;row++){
+    for(let row=0;row<20;row++){
       const c=[];
-      for(let col=0;col<50;col++){
+      for(let col=0;col<60;col++){
         const ran = Math.floor(Math.random()*5+1);
         const box= this.state.boxes;
 
@@ -476,28 +476,6 @@ export default class GridLayout extends Component {
                         clearGrid={() => this.clearGrid()}
                         randomGrid={() => this.randomGrid()}
                 ></Header>
-
-              <div className="row container">
-
-                <button onClick={() => this.visualizeDijkstra()}>Dijkstra's Algorithm</button>
-
-                <button onClick={() => this.visuaizeGBFS()}> GBFS Algorithm </button>
-
-                <button onClick={() => this.visuaizeBFS()}> BFS Algorithm </button>
-
-                <button onClick={() => this.visuaizeDFS()}> DFS Algorithm </button>
-
-                <button onClick={() => this.clearGrid()} > Clear Grid </button>
-
-                <button onClick={() => this.randomGrid()} > Random maze</button>
-
-                <button onClick={() => this.visualizeBBFS()}> Bbfs</button>
-
-                <button onClick={() => this.visualizeaSearch()}> A *</button>
-
-
-
-              </div>
 
               <div className="grid-container">
                      { console.log(this.state.boxes)}
