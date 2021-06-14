@@ -36,7 +36,7 @@ function sortNodesByDistance(pqueue) {
 
 function getManhattanDistance(currNode, finishNode) {
     /** Returns the Manhattan Distance between two points*/
-    return Math.abs(currNode.row - finishNode.row) + Math.abs(currNode.col - finishNode.col)
+    return Math.abs(currNode.row - finishNode.row) + Math.abs(currNode.col - finishNode.col)+ Math.abs(currNode.cost - finishNode.cost)
 }
 
 function getUnvisitedNeighbours(node, grid) {

@@ -8,7 +8,7 @@ export function aSearch(grid,start,finish){
     let open = new PriorityQueue();
     start.aEndDis = calDis(finish,start)
 
-    open.enqueue(start,start.aEndDis);
+    open.enqueue(start,start.aEndDis+start.cost);
     op.push(start);
 
     let closed = new PriorityQueue();
@@ -26,7 +26,7 @@ export function aSearch(grid,start,finish){
 
         current.isVisited= true
 
-        closed.enqueue(current,current.aEndDis);
+        closed.enqueue(current,current.aEndDis+current.cost);
         cl.push(current)
         closed.print()
         const neigh = getUnvisitedNeighboursBfs(current,grid);
@@ -50,7 +50,7 @@ export function aSearch(grid,start,finish){
             }
 
             if(!(neigh[i] in op)){
-                open.enqueue(neigh[i],neigh[i].aEndDis)
+                open.enqueue(neigh[i],neigh[i].aEndDis+neigh[i].cost);
                 op.push(neigh[i])
                 neigh[i].previousNode = current
 
