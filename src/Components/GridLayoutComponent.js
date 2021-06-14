@@ -104,9 +104,10 @@ class GridLayout extends Component {
             }
             b.push(currRow)
         }
-
+        
       return b;
     }
+    
 
     grdRender(r,c){
       const b=[];
@@ -253,7 +254,7 @@ class GridLayout extends Component {
               iswall: !this.prime(ran) && !node.strt && !node.end ? true : false
           };
           if(!this.prime(ran) && !node.strt && !node.end){
-            document.getElementById(`node-${row}-${col}`).className = 'node-wall';
+            document.getElementById(`node-${row}-${col}`).className += ' node-wall';
           }
             c.push(val);
         }
@@ -292,7 +293,7 @@ class GridLayout extends Component {
               iswall: false
           };
           if(!this.prime(ran) && !node.strt && !node.end){
-            document.getElementById(`node-${row}-${col}`).className = 'node-weight';
+            document.getElementById(`node-${row}-${col}`).className += ' node-weight';
           }
             c.push(val);
         }
@@ -394,8 +395,8 @@ class GridLayout extends Component {
           console.log(node);
           console.log(node.row+" "+node.col);
 
-          document.getElementById(`node-${node.row}-${node.col}`).className =
-            'node node-shortest-path';
+          document.getElementById(`node-${node.row}-${node.col}`).className +=
+            ' node node-shortest-path';
         },  10 * i);
       }
     }
@@ -416,8 +417,8 @@ class GridLayout extends Component {
         console.log(node)
         console.log(node.row+" "+node.col);
         console.log(document.getElementById(`node-${node.row}-${node.col}`).id)
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          'node node-visited';
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          ' node node-visited';
         }, 10 * i);
       }
     }
@@ -438,8 +439,8 @@ class GridLayout extends Component {
         setTimeout(() => {
         const node = visitedNodes[i];
         console.log(node);
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          'node node-visited';
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          ' node node-visited';
         }, 10 * i);
       }
     }
@@ -458,8 +459,8 @@ class GridLayout extends Component {
 
         setTimeout(() => {
         const node = visitedNodes[i];
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          'node node-visited';
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          ' node node-visited';
         }, 10 * i);
       }
     }
@@ -478,8 +479,8 @@ class GridLayout extends Component {
 
         setTimeout(() => {
         const node = visitedNodes[i];
-        document.getElementById(`node-${node.row}-${node.col}`).className =
-          'node node-visited';
+        document.getElementById(`node-${node.row}-${node.col}`).className +=
+          ' node node-visited';
         }, 10 * i);
       }
     }
@@ -697,6 +698,7 @@ class GridLayout extends Component {
                               unchanged={this.state.unchanged} 
                               mouseIsPressed={this.state.isMousePressed} 
                               iswall={c.iswall}
+                              weight={c.isweight}
 
                               onMouseDown ={(row,col) => this.handleMouseDown(row,col)}
                               onMouseEnter = {(row,col) => this.handleMouseEnter(row,col)}

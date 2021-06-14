@@ -65,34 +65,44 @@ class Header extends Component{
 
         return(
             <div>
-                <Navbar className="nav-bg">
+                <Navbar dark expand="md" className="nav-bg">
                     <div className="container row">
                         <NavbarToggler onClick={this.togglefunc}/>
 
-                        <div>
-                            <NavbarBrand className="mr-auto" href="/">
-                                <img height="70px" src= {Img} alt="Algo-Visualizer" />
+                        <div className="nav">
+                            <NavbarBrand className="ml-auto" href="/">
+                                <img  src= {Img} height="60" alt="Algo-Visualizer" />
                             </NavbarBrand>
                             <br/>
                             <br/>
 
-                            <Form onSubmit={this.handleSubmit}>
-                                <FormGroup>
-                                    <Input type='select' className="select" name='algo' onChange={(e) => this.setState({ algo: e.target.value })}>
-                                        <option value='null'>Algorithm</option>
-                                        <option value='Dijkstra'>Dijkstra</option>
-                                        <option value='BFS'>BFS</option>
-                                        <option value='GBFS'>Greedy BFS</option>
-                                        <option value='DFS'>DFS</option>
-                                        <option value='BBFS'>Bi-Directional BFS</option>
-                                        <option value='A*'>A star</option>
-                                    </Input>
-                                </FormGroup>
-                                <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
-                            </Form>
-                            <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
-                            <button className="btn btn-primary btn-2" onClick={() => this.props.randomWeight()}>Random Weight Grid</button>
-                            <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>Clear Grid</button>
+                        <Collapse isOpen={this.state.isNavOpen} className="collapse navbar-collapse">
+                            <Nav className="mr-auto">
+                                <Form onSubmit={this.handleSubmit}>
+                                    <NavItem className="navbar-nav">
+                                        <FormGroup>
+                                            <Input type='select' className="select" name='algo' onChange={(e) => this.setState({ algo: e.target.value })}>
+                                                <option value='null'>Algorithm</option>
+                                                <option value='Dijkstra'>Dijkstra</option>
+                                                <option value='BFS'>BFS</option>
+                                                <option value='GBFS'>Greedy BFS</option>
+                                                <option value='DFS'>DFS</option>
+                                                <option value='BBFS'>Bi-Directional BFS</option>
+                                                <option value='A*'>A star</option>
+                                            </Input>
+                                        </FormGroup>
+                                        <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
+                                    </NavItem>
+                                    
+                                
+                                </Form>
+                                    <NavItem className="nav2">
+                                        <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
+                                        <button className="btn btn-primary btn-2" onClick={() => this.props.randomWeight()}>Random Weight Grid</button>
+                                        <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>Clear Grid</button>
+                                    </NavItem>
+                            </Nav>
+                        </Collapse>
                         </div>
 
                     </div>
