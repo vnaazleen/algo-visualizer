@@ -8,6 +8,9 @@ function card(props) {
         setTimeout(()=>{
             target.style.display='none';
         },0);
+        // e.target.appendChild(card);
+        // console.log('r'+props.row+'c'+props.col);
+        // props.funcChd([props.row,props.col]);
     }
 
     const dragOver = e =>{

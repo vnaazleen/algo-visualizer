@@ -34,6 +34,7 @@ class GridLayout extends Component {
             boxes:val2
           })
       console.log(document.getElementById(`node-${this.state.start[0]}-${this.state.start[1]}`));
+      console.log(this.state.boxes);
       }
     }
 
@@ -42,6 +43,7 @@ class GridLayout extends Component {
       this.setState({
         boxes:val
       })
+      // this.updateStyle();
     }
 
     change = (va) => {
@@ -55,6 +57,7 @@ class GridLayout extends Component {
 
       this.setState({
         changed:true,start: va, unchanged: false},()=>{
+
         console.log("after state ", this.state.start);
         this.setState({
           changed:false,
@@ -77,6 +80,23 @@ class GridLayout extends Component {
 
 
     // change(1);
+
+    // updateStyle(){
+    //   for(let row=0;row<19;row++){
+    //     for(let col=0;col<60;col++){
+    //       document.getElementById(`node-${row}-${col}`).className = 'unvisited';
+    //       if((row===this.state.start[0] && col===this.state.start[1]))
+    //       {
+    //         document.getElementById(`node-${row}-${col}`).className = 'start';
+    //       }
+    //       else if((row===this.state.end[0] && col===this.state.end[1]))
+    //       {
+    //         document.getElementById(`node-${row}-${col}`).className = 'end';
+    //       }
+    //     }
+    //   }
+    // }
+
 
     gridRender(){
         const b=[];
@@ -107,7 +127,7 @@ class GridLayout extends Component {
         
       return b;
     }
-    
+
 
     grdRender(r,c){
       const b=[];
@@ -132,6 +152,7 @@ class GridLayout extends Component {
                   aDis:0
               };
               currRow.push(val);
+              document.getElementById(`node-${row}-${col}`).className = 'unvisited';
           }
           b.push(currRow)
       }
@@ -180,12 +201,12 @@ class GridLayout extends Component {
         const node = val[row][col];
         if(st)
         {
-          if(!node.iswall && !node.isweight){
+          if(!node.iswall && !node.isweight && !node.strt && !node.end){
             document.getElementById(`node-${row}-${col}`).className = '';
           }
         }
         else{
-          if(!node.iswall){
+          if(!node.iswall && !node.strt && !node.end){
             document.getElementById(`node-${row}-${col}`).className = '';
           }
         }
@@ -416,7 +437,7 @@ class GridLayout extends Component {
         const node = visitedNodes[i];
         console.log(node)
         console.log(node.row+" "+node.col);
-        console.log(document.getElementById(`node-${node.row}-${node.col}`).id)
+        console.log(document.getElementById(`node-${node.row}-${node.col}`).className)
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           ' node node-visited';
         }, 10 * i);
@@ -612,29 +633,110 @@ class GridLayout extends Component {
       this.animateDijkstra(visitedNodes, shortestPath);
     }
 
+    clearSurround(row,col){
+      if(row!=0)
+        document.getElementById(`node-${row-1}-${col}`).className = 'gridblock unvisited';
+      if(col!=0)
+        document.getElementById(`node-${row}-${col-1}`).className = 'gridblock unvisited';
+      if(col!=59)
+        document.getElementById(`node-${row}-${col+1}`).className = 'gridblock unvisited';
+      if(row!=18)
+        document.getElementById(`node-${row+1}-${col}`).className = 'gridblock unvisited';
+      
+    }
+
     handleMouseDown(row,col) {
       console.log("Down");
-      const newgrid  = this.getNewGridWithWall(this.state.boxes,row,col);
-      this.setState({
-        boxes:newgrid,
-        isMousePressed:true
-      });
-      document.getElementById(`node-${row}-${col}`).className = 'node-wall';
+      const node = this.state.boxes[row][col]
+      console.log(node)
+      if(!node.strt && !node.end)
+      {
+        const newgrid  = this.getNewGridWithWall(this.state.boxes,row,col);
+        this.setState({
+          boxes:newgrid,
+          isMousePressed:true
+        });
+        console.log("wall -",row,col);
+        document.getElementById(`node-${row}-${col}`).className = 'node-wall';
+      }
+      else if(node.strt)
+      {
+        this.setState({
+          isStartPressed:true
+        });
+        console.log(" -",row,col);
+        document.getElementById(`node-${row}-${col}`).className = '';
+      }
+      else if(node.end)
+      {
+        this.setState({
+          isEndPressed:true
+        });
+        console.log(" -",row,col);
+        document.getElementById(`node-${row}-${col}`).className = '';
+      }
+
 
     }
 
     handleMouseEnter(row,col){
       console.log("Enter -"+row +'-'+col);
+      const node = this.state.boxes[row][col]
 
-      if( ! this.state.isMousePressed ) return;
-      const newGrid = this.getNewGridWithWall(this.state.boxes,row,col);
-      this.setState({boxes:newGrid});
+      if( ! this.state.isMousePressed && !this.state.isStartPressed && !this.state.isEndPressed) return;
+      if(this.state.isMousePressed)
+      {
+          if(!node.strt && !node.end)
+        {
+          const newGrid = this.getNewGridWithWall(this.state.boxes,row,col);
+          this.setState({boxes:newGrid});
+        }
+      }
+      
+      else if(this.state.isStartPressed)
+      {
+        document.getElementById(`node-${row}-${col}`).className = 'start';
+        this.setState({
+          // boxes:newGrid,
+          start:[row,col],
+          changed:true
+        },()=>{
+          this.setState({
+            changed:false
+          })
+        })
+        this.clearSurround(row,col);
+      }
+
+      else if(this.state.isEndPressed)
+      {
+        document.getElementById(`node-${row}-${col}`).className = 'end';
+        this.setState({
+          end:[row,col],
+          changed:true
+        },()=>{
+          this.setState({
+            changed:false
+          })
+        })
+        this.clearSurround(row,col);
+      }
     }
 
     handleMouseUp(){
       console.log("Up");
-
-      this.setState({isMousePressed:false});
+      if(this.state.isMousePressed)
+      {
+        this.setState({isMousePressed:false});
+      }
+      else if(this.state.isStartPressed)
+      {
+        this.setState({isStartPressed:false});
+      }
+      else if(this.state.isEndPressed)
+      {
+        this.setState({isEndPressed:false});
+      }
     }
 
 
@@ -651,6 +753,7 @@ class GridLayout extends Component {
       return newGrid;
     }
 
+    
     chngstart(){
       this.grdRender();  
     }

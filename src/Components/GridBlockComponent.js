@@ -31,18 +31,19 @@ export default class GridBlockComponent extends Component {
             
 
             
-            <div id={`node-${this.props.row}-${this.props.col}`} className={`grid-block ${clsName}`}
+            <div id={`node-${this.props.row}-${this.props.col}`} className={`grid-block ${this.props.start?'start':this.props.end?'end':'unvisited'} ${clsName}`}
 
                     onMouseDown={() => this.props.onMouseDown(this.props.row,this.props.col)}
                     onMouseEnter={() => this.props.onMouseEnter(this.props.row,this.props.col)}
                     onMouseUp={() => this.props.onMouseUp()} 
                     
                     >
-            <Board id={`board-${this.props.row}-${this.props.col}`} className={`board`} row={this.props.row} col={this.props.col} grdRender={this.props.grdRender.bind(this)} funcChd={this.funcChild.bind(this)}>
-                {(s||e) && this.props.unchanged 
+            {/* <Board id={`board-${this.props.row}-${this.props.col}`} className={`board`} row={this.props.row} col={this.props.col} grdRender={this.props.grdRender.bind(this)} funcChd={this.funcChild.bind(this)}>
+                { this.props.unchanged && (this.props.start||this.props.end)  
+              
                     ?
                 
-                        <Card id={`card-${this.props.row}-${this.props.col}`} className={`card`} draggable={(s || e) && this.props.unchanged ? true: false } row={this.props.row} col={this.props.col}>
+                        <Card id={`card-${this.props.row}-${this.props.col}`} className={`card`} draggable={this.props.unchanged && (this.props.start || this.props.end) ? true: false } row={this.props.row} col={this.props.col} funcChd={this.funcChild.bind(this)}>
 
                                 {console.log("row"+this.props.row +" "+ this.props.col)}                    
                                 {console.log(this.props.unchanged)}
@@ -53,7 +54,7 @@ export default class GridBlockComponent extends Component {
                     :
                         ''
                 }
-            </Board>
+            </Board> */}
 
         </div>
         

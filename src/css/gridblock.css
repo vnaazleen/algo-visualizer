@@ -34,11 +34,6 @@
     background:red;
 } */
 
-.fa {
-	display: flex !important;
-	justify-content: center;
-}
-
 .node {
 	width: 28px;
 	height: 28px;
@@ -210,4 +205,34 @@ li.nav-item {
 .nav2 {
 	display: inline-block;
 	padding-top: 6px;
+}
+
+.start {
+	position: relative;
+	background-image: url(http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/256/Start-icon.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+	animation-direction: alternate;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+}
+
+/*  */
+
+.end {
+	position: relative;
+	background-image: url(http://pngimg.com/uploads/dot/dot_PNG14.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+	animation-direction: alternate;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
 }
