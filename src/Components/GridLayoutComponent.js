@@ -186,7 +186,8 @@ class GridLayout extends Component {
                   aDis:0
               };
               currRow.push(val);
-              document.getElementById(`node-${row}-${col}`).className = '';
+              if(!val.strt && !val.end)
+                document.getElementById(`node-${row}-${col}`).className = '';
           }
           b.push(currRow)
       }
