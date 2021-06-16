@@ -177,6 +177,14 @@ class GridLayout extends Component {
               currRow.push(val);
               if(!val.strt && !val.end)
                 document.getElementById(`node-${row}-${col}`).className = '';
+                if(val.strt)
+                {
+                  document.getElementById(`node-${row}-${col}`).className = 'start';
+                }
+                else if(val.end)
+                {
+                  document.getElementById(`node-${row}-${col}`).className = 'end';
+                }
           }
           b.push(currRow)
       }
@@ -189,6 +197,14 @@ class GridLayout extends Component {
     for(let row=0;row<val.length;row++){
       for(let col=0;col<val[0].length;col++){
         const node = val[row][col];
+        if(node.strt)
+        {
+          document.getElementById(`node-${row}-${col}`).className = 'start';
+        }
+        else if(node.end)
+        {
+          document.getElementById(`node-${row}-${col}`).className = 'end';
+        }
         if(st)
         {
           if(!node.iswall && !node.isweight && !node.strt && !node.end){
