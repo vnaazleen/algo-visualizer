@@ -66,8 +66,11 @@ class Header extends Component{
         return(
             <div>
                 <Navbar dark expand="md" className="nav-bg">
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
                     <NavbarBrand className="ml-auto" href="/">
-                                <img  src= {Img} height="60" alt="Algo-Visualizer" />
+                                <img  src= {Img} height="70" alt="Algo-Visualizer" />
                     </NavbarBrand>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
