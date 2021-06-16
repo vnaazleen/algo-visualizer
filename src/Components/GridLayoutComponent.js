@@ -62,18 +62,7 @@ class GridLayout extends Component {
         this.setState({
           changed:false,
         })
-        // console.log(val2);
-        // this.setState({
-        //     boxes:val2
-        // })
-
       });
-
-      // console.log("after state:",this.state.start)
-      // let val2 = this.gridRender();
-      // this.setState({
-      //   boxes:val2
-      // })
       console.log(document.getElementById(`node-${this.state.start[0]}-${this.state.start[1]}`));
       console.log("state ",this.state.start);
     }
@@ -210,6 +199,7 @@ class GridLayout extends Component {
           if(!node.iswall && !node.strt && !node.end){
             document.getElementById(`node-${row}-${col}`).className = '';
           }
+          // document.getElementById('display').innerHTML("This Algorithm doesn't support the weights");
         }
       }
     }
@@ -666,7 +656,7 @@ class GridLayout extends Component {
           isStartPressed:true
         });
         console.log(" -",row,col);
-        document.getElementById(`node-${row}-${col}`).className = '';
+        // document.getElementById(`node-${row}-${col}`).className = '';
       }
       else if(node.end)
       {
@@ -674,7 +664,7 @@ class GridLayout extends Component {
           isEndPressed:true
         });
         console.log(" -",row,col);
-        document.getElementById(`node-${row}-${col}`).className = '';
+        // document.getElementById(`node-${row}-${col}`).className = '';
       }
 
 
@@ -696,6 +686,7 @@ class GridLayout extends Component {
       
       else if(this.state.isStartPressed)
       {
+        document.getElementById(`node-${row}-${col}`).className = '';
         document.getElementById(`node-${row}-${col}`).className = 'start';
         this.setState({
           // boxes:newGrid,
@@ -711,6 +702,7 @@ class GridLayout extends Component {
 
       else if(this.state.isEndPressed)
       {
+        document.getElementById(`node-${row}-${col}`).className = '';
         document.getElementById(`node-${row}-${col}`).className = 'end';
         this.setState({
           end:[row,col],
@@ -754,10 +746,6 @@ class GridLayout extends Component {
       return newGrid;
     }
 
-    
-    chngstart(){
-      this.grdRender();  
-    }
 
     render() {
         const {boxes} = this.state;
@@ -780,7 +768,9 @@ class GridLayout extends Component {
                         randomWeight={()=> this.randomWeight()}
                 ></Header>
 
-              <button onClick={()=>this.chngstart()}> click</button>
+              <div id="display"></div>
+
+              
               <div className="grid-container">
                     {
                     boxes.map((row,pos) => {

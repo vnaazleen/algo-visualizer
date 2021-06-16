@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../css/gridblock.css';
-import Board from './Board';
-import Card from './card';
 import GridLayout from './GridLayoutComponent';
 
 export default class GridBlockComponent extends Component {

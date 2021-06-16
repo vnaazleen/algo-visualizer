@@ -59,33 +59,33 @@ export function biDirectionalBfs(grid,start,finish) {
                     for (let j=0;j<sur.length;j++){
                         if(bk.includes(sur[j])){
                             let r2;
-                            console.log("end ");
+                            console.log("end ",sur[j]);
                             neighSt[i].isVisited=true
-                            let val =  neighSt[i]
-                            // while(!grid[val.row][val.col-1].isBbfs || !grid[val.row+1][val.col].isBbfs || !grid[val.row-1][val.col].isBbfs){
-                            //     val= val.previousNode
+                            // let val =  neighSt[i]
+                            // // while(!grid[val.row][val.col-1].isBbfs || !grid[val.row+1][val.col].isBbfs || !grid[val.row-1][val.col].isBbfs){
+                            // //     val= val.previousNode
+                            // // }
+                            // if(start.row===val.row){
+                            //     while(!grid[val.row][val.col-1].isBbfs){
+                            //         val = val.previousNode
+                            //     }
+                            //     r2 = grid[val.row][val.col-1]
                             // }
-                            if(start.row===val.row){
-                                while(!grid[val.row][val.col-1].isBbfs){
-                                    val = val.previousNode
-                                }
-                                r2 = grid[val.row][val.col-1]
-                            }
-                            else if(start.col>val.col){
-                                while(!grid[val.row+1][val.col].isBbfs){
-                                    val = val.previousNode
-                                }
-                                r2 = grid[val.row+1][val.col]
-                            }
-                            else if(start.col<val.col){
-                                while(!grid[val.row-1][val.col].isBbfs){
-                                    val = val.previousNode
-                                }
-                                r2 = grid[val.row-1][val.col]
-                            }
-                            console.log(neighSt[i].row);
+                            // else if(start.col>val.col){
+                            //     while(!grid[val.row+1][val.col].isBbfs){
+                            //         val = val.previousNode
+                            //     }
+                            //     r2 = grid[val.row+1][val.col]
+                            // }
+                            // else if(start.col<val.col){
+                            //     while(!grid[val.row-1][val.col].isBbfs){
+                            //         val = val.previousNode
+                            //     }
+                            //     r2 = grid[val.row-1][val.col]
+                            // }
+                            // console.log(neighSt[i].row);
 
-                            return [neighbors,neighSt[i],r2]; 
+                            return [neighbors,neighSt[i],sur[j]]; 
                         }
                     }
                     
@@ -105,32 +105,32 @@ export function biDirectionalBfs(grid,start,finish) {
                 for (let j=0;j<sur.length;j++){
                 if(st.includes(sur[j])){
                     let r2;
-                    console.log("end ");
+                    console.log("end--",sur[j]);
                     neighBk[i].isVisited=true
-                    let val =  neighBk[i]
+                    // let val =  neighBk[i]
                     // while(!grid[val.row][val.col-1].isBbfs || !grid[val.row+1][val.col].isBbfs || !grid[val.row-1][val.col].isBbfs){
                     //     val= val.previousNode
                     // }
-                    if(start.row===val.row){
-                        while(!grid[val.row][val.col-1].isBbfs){
-                            val = val.previousNode
-                        }
-                        r2 = grid[val.row][val.col-1]
-                    }
-                    else if(start.col>val.col){
-                        while(!grid[val.row+1][val.col].isBbfs){
-                            val = val.previousNode
-                        }
-                        r2 = grid[val.row+1][val.col]
-                    }
-                    else if(start.col<val.col){
-                        while(!grid[val.row-1][val.col].isBbfs){
-                            val = val.previousNode
-                        }
-                        r2 = grid[val.row-1][val.col]
-                    }
-                    console.log(neighBk[i]);
-                    return [neighbors,neighBk[i],r2]; 
+                    // if(start.row===val.row){
+                    //     while(!grid[val.row][val.col-1].isBbfs){
+                    //         val = val.previousNode
+                    //     }
+                    //     r2 = grid[val.row][val.col-1]
+                    // }
+                    // else if(start.col>val.col){
+                    //     while(!grid[val.row+1][val.col].isBbfs){
+                    //         val = val.previousNode
+                    //     }
+                    //     r2 = grid[val.row+1][val.col]
+                    // }
+                    // else if(start.col<val.col){
+                    //     while(!grid[val.row-1][val.col].isBbfs){
+                    //         val = val.previousNode
+                    //     }
+                    //     r2 = grid[val.row-1][val.col]
+                    // }
+                    // console.log(neighBk[i]);
+                    return [neighbors,neighBk[i],sur[j]]; 
                 }
             }
                 
