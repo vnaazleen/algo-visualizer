@@ -1,7 +1,7 @@
 import react,{Component} from 'react';
 import {Nav,NavLink,NavbarToggler,NavbarBrand,Collapse, NavItem,Button , Navbar,Jumbotron,Form, FormGroup, Input} from 'reactstrap';
 import { visuaizeBFS,visualizeDijkstra } from "./GridLayoutComponent";
-import Img from '../images/logo.png'
+import Img from '../images/logo1.png'
 
 class Header extends Component{
     constructor(props){
@@ -66,15 +66,19 @@ class Header extends Component{
         return(
             <div>
                 <Navbar dark expand="md" className="nav-bg">
+                    <NavbarBrand className="ml-auto" href="/">
+                                <img  src= {Img} height="60" alt="Algo-Visualizer" />
+                    </NavbarBrand>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     
+
                     <div className="container row">
                         <NavbarToggler onClick={this.togglefunc}/>
 
                         <div className="nav">
-                            <NavbarBrand className="ml-auto" href="/">
-                                <img  src= {Img} height="60" alt="Algo-Visualizer" />
-                            </NavbarBrand>
-                            <br/>
-                            <br/>
 
                         <Collapse isOpen={this.state.isNavOpen} className="collapse navbar-collapse">
                             <Nav className="mr-auto">
