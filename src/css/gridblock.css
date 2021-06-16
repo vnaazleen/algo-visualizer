@@ -11,6 +11,40 @@
 	margin: 100px 0px 0px;
 }
 
+.start {
+	position: relative;
+	background-image: url(http://cdn.onlinewebfonts.com/svg/download_71708.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation-name: specialNodes;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
+	animation-delay: 0;
+	animation-direction: alternate;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+}
+
+/*  */
+
+.end {
+	position: relative;
+	background-image: url(http://cdn.onlinewebfonts.com/svg/img_208778.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation-name: specialNodes;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
+	animation-delay: 0;
+	animation-direction: alternate;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+}
+
 /* .icon::before{
     display: inline-block;
     font-style:normal;
@@ -207,32 +241,19 @@ li.nav-item {
 	padding-top: 6px;
 }
 
-.start {
-	position: relative;
-	background-image: url(http://cdn.onlinewebfonts.com/svg/download_71708.png);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	animation-duration: 1.5s;
-	animation-timing-function: ease-out;
-	animation-direction: alternate;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-}
+@keyframes specialNodes {
+	0% {
+		transform: scale(0.3);
+		/*background-color: darkslategrey;*/
+	}
 
-/*  */
+	50% {
+		transform: scale(1.2);
+		/*background-color: darkslategrey;*/
+	}
 
-.end {
-	position: relative;
-	background-image: url(http://cdn.onlinewebfonts.com/svg/img_208778.png);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	animation-duration: 1.5s;
-	animation-timing-function: ease-out;
-	animation-direction: alternate;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
+	100% {
+		transform: scale(1);
+		/*background-color: darkslategrey;*/
+	}
 }
