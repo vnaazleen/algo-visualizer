@@ -131,7 +131,7 @@ export function biDirectionalBfs(grid,start,finish) {
                     // }
                     // console.log(neighBk[i]);
                     return [neighbors,neighBk[i],sur[j]]; 
-                }
+                }               
             }
                 
                     console.log(neighBk[i])

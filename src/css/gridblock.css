@@ -101,9 +101,14 @@
 
 @keyframes visitedAnimation {
 	0% {
-		transform: scale(0.3);
+		transform: scale(0.1);
 		background-color: rgba(0, 0, 66, 0.75);
 		border-radius: 100%;
+	}
+
+	25% {
+		transform: scale(0.5);
+		background-color: rgba(117, 160, 216, 0.75);
 	}
 
 	50% {
@@ -236,11 +241,6 @@ li.nav-item {
 	margin-top: 60px;
 }
 
-.nav2 {
-	display: inline-block;
-	padding-top: 6px;
-}
-
 @keyframes specialNodes {
 	0% {
 		transform: scale(0.3);
@@ -255,5 +255,11 @@ li.nav-item {
 	100% {
 		transform: scale(1);
 		/*background-color: darkslategrey;*/
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.nav2 {
+		margin-left: 6px;
 	}
 }

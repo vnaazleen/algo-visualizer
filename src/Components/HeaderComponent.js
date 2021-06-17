@@ -70,7 +70,7 @@ class Header extends Component{
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
                     <NavbarBrand className="ml-auto" href="/">
-                                <img  src= {Img} height="70" alt="Algo-Visualizer" />
+                                <img  src= {Img} height="55" alt="Algo-Visualizer" />
                     </NavbarBrand>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -100,12 +100,14 @@ class Header extends Component{
                                         </FormGroup>
                                         <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                                     </NavItem>
-                                    
-                                
                                 </Form>
                                     <NavItem className="nav2">
                                         <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
+                                    </NavItem>
+                                    <NavItem className="nav2">
                                         <button className="btn btn-primary btn-2" onClick={() => this.props.randomWeight()}>Random Weight Grid</button>
+                                    </NavItem>
+                                    <NavItem className="nav2">
                                         <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>Clear Grid</button>
                                     </NavItem>
                             </Nav>
