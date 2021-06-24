@@ -241,6 +241,10 @@ li.nav-item {
 	margin-top: 60px;
 }
 
+.speed {
+	margin-left: 50px;
+}
+
 @keyframes specialNodes {
 	0% {
 		transform: scale(0.3);

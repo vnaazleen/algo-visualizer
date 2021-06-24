@@ -20,7 +20,9 @@ class GridLayout extends Component {
             start:[1,10],
             changed:false,
             end:[13,45],
-            unchanged:true
+            unchanged:true,
+            speed:{slow:1000,normal:100,fast:10},
+            curSpeed:10,
         }
     } 
 
@@ -425,7 +427,7 @@ class GridLayout extends Component {
 
           document.getElementById(`node-${node.row}-${node.col}`).className +=
             ' node node-shortest-path';
-        },  10 * i);
+        },  this.state.curSpeed * i);
       }
     }
 
@@ -436,10 +438,11 @@ class GridLayout extends Component {
         if (i === visitedNodes.length - 1) {
           setTimeout(() => {
             this.animateShortestPath(shortestPath);
-          }, 10 * i);
+          }, this.state.curSpeed * i);
           return;
         }
 
+        console.log("this.state.curSpeed");
         setTimeout(() => {
         const node = visitedNodes[i];
         console.log(node)
@@ -447,7 +450,7 @@ class GridLayout extends Component {
         console.log(document.getElementById(`node-${node.row}-${node.col}`).className)
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           ' node node-visited';
-        }, 10 * i);
+        }, this.state.curSpeed * i);
       }
     }
 
@@ -460,7 +463,7 @@ class GridLayout extends Component {
         if (i === visitedNodes.length - 1) {
           setTimeout(() => {
             this.animateShortestPath(shortestPath);
-          }, 10 * i);
+          }, this.state.curSpeed * i);
           return;
         }
 
@@ -469,7 +472,7 @@ class GridLayout extends Component {
         console.log(node);
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           ' node node-visited';
-        }, 10 * i);
+        }, this.state.curSpeed * i);
       }
     }
 
@@ -481,7 +484,7 @@ class GridLayout extends Component {
           setTimeout(() => {
             this.animateShortestPath(shortestPath1);
             this.animateShortestPath(shortestPath2);
-          }, 10 * i);
+          }, this.state.curSpeed * i);
           return;
         }
 
@@ -489,7 +492,7 @@ class GridLayout extends Component {
         const node = visitedNodes[i];
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           ' node node-visited';
-        }, 10 * i);
+        }, this.state.curSpeed * i);
       }
     }
 
@@ -501,7 +504,7 @@ class GridLayout extends Component {
           setTimeout(() => {
             console.log(visitedNodes);
             this.animateShortestPath(visitedNodes);
-          }, 10* i);
+          }, this.state.curSpeed * i);
           return;
         }
 
@@ -509,9 +512,38 @@ class GridLayout extends Component {
         const node = visitedNodes[i];
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           ' node node-visited';
-        }, 10 * i);
+        }, this.state.curSpeed * i);
       }
     }
+
+    // speed
+
+    fast(){
+      console.log("lay fast",this.state.curSpeed)
+      this.setState({
+        curSpeed:this.state.speed.fast
+      })
+      console.log("lay fast after",this.state.curSpeed)
+
+    }
+
+    normal(){
+      console.log("lay normal",this.state.curSpeed)
+      this.setState({
+        curSpeed:this.state.speed.normal
+      })
+      console.log("lay normal after",this.state.curSpeed)
+    }
+
+    slow(){
+      console.log("lay slow",this.state.curSpeed)
+
+      this.setState({
+        curSpeed:this.state.speed.slow
+      })
+      console.log("lay slow after",this.state.curSpeed)
+    }
+
 
     visualizeDijkstra() {
       if(this.state.boxes !== []){
@@ -782,6 +814,9 @@ class GridLayout extends Component {
                         clearGrid={() => this.clearGrid()}
                         randomGrid={() => this.randomGrid()}
                         randomWeight={()=> this.randomWeight()}
+                        fast={()=>this.fast()}
+                        slow={()=>this.slow()}
+                        normal={()=>this.normal()}
                 ></Header>
 
               <div id="display"></div>

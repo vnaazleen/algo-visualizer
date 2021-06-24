@@ -10,6 +10,7 @@ class Header extends Component{
         this.state = {
             isNavOpen:false,
             algo:'',
+            speed:''
         }
 
         this.togglefunc = this.togglefunc.bind(this);
@@ -35,25 +36,42 @@ class Header extends Component{
     handleSubmit(event){
         event.preventDefault()
 
-        console.log(this.state.algo)
-        if(this.state.algo === 'Dijkstra'){
-            this.props.dijkstra()
+        console.log(this.state.speed)
+        if(this.state.speed === 'fast')
+        {
+            this.props.fast()
         }
-        else if(this.state.algo === 'BFS'){
-            this.props.bfs()
+        else if(this.state.speed === 'normal')
+        {
+            this.props.normal()
         }
-        else if(this.state.algo === 'GBFS'){
-            this.props.gbfs()
+        else if(this.state.speed === 'slow')
+        {
+            this.props.slow()
         }
-        else if(this.state.algo === 'DFS'){
-            this.props.dfs()
-        }
-        else if(this.state.algo === 'BBFS'){
-            this.props.bbfs()
-        }
-        else if(this.state.algo === 'A*'){
-            this.props.astar()
-        }
+
+        setTimeout(()=>{
+            console.log(this.state.algo)
+            if(this.state.algo === 'Dijkstra'){
+                this.props.dijkstra()
+            }
+            else if(this.state.algo === 'BFS'){
+                this.props.bfs()
+            }
+            else if(this.state.algo === 'GBFS'){
+                this.props.gbfs()
+            }
+            else if(this.state.algo === 'DFS'){
+                this.props.dfs()
+            }
+            else if(this.state.algo === 'BBFS'){
+                this.props.bbfs()
+            }
+            else if(this.state.algo === 'A*'){
+                this.props.astar()
+            }
+        },100)
+        
         
         // return this.state.algo;
         event.preventDefault()
@@ -101,15 +119,22 @@ class Header extends Component{
                                         <button type="submit" value="submit" className="btn btn-outline-info sub-btn"  >{`visualize ${this.state.algo !== 'null'? this.state.algo : '' }`} </button>
                                     </NavItem>
                                 </Form>
-                                    <NavItem className="nav2">
-                                        <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
-                                    </NavItem>
-                                    <NavItem className="nav2">
-                                        <button className="btn btn-primary btn-2" onClick={() => this.props.randomWeight()}>Random Weight Grid</button>
-                                    </NavItem>
-                                    <NavItem className="nav2">
-                                        <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>Clear Grid</button>
-                                    </NavItem>
+                                <NavItem className="nav2">
+                                    <button className="btn btn-primary btn-1" onClick={() => this.props.randomGrid()}>Random Grid</button>
+                                </NavItem>
+                                <NavItem className="nav2">
+                                    <button className="btn btn-primary btn-2" onClick={() => this.props.randomWeight()}>Random Weight Grid</button>
+                                </NavItem>
+                                <NavItem className="nav2">
+                                    <button className="btn btn-primary btn-2" onClick={() => this.props.clearGrid()}>Clear Grid</button>
+                                </NavItem>
+                                <NavItem className="nav2">
+                                    <Input type='select' className="select speed" name='speed' onChange={(e) => this.setState({ speed: e.target.value })}>
+                                        <option value='fast'>fast</option>
+                                        <option value='normal'>normal</option>
+                                        <option value='slow'>slow</option>
+                                    </Input>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                         </div>
