@@ -1,4 +1,35 @@
-# Algo-Visualizer
+![top_header](https://user-images.githubusercontent.com/54474853/132137700-29d70274-f36f-495b-8335-1f1f55a3f7c8.PNG)
 
-" One of the most difficult topics that students feel is GRAPH THEORY. There are several complex graph algorithms like BFS, DFS, Dijkstra's, A* etc. Our goal is to make them easy by providing beautiful visualisations. "
+# Algorithm Visualizer
+
+Algorithm Visualizer is a Front-end Web Application to visualize various graph path-finding algorithms.
+
+Visit the web app by [clicking here 🚀](https://algo-visualizer-vvit.netlify.app/)
+
+## Algorithms 
+* BFS
+* Bi-directional BFS
+* DFS
+* Greedy Best first search
+* A* search
+* Dijkstra's
+
+## DataStructures
+* Priority Queue
+
+## Tech Stack
+* React JS
+* BootStrap
+
+## How it Works
+* User can drag around a start and end node and set them in any place.
+* User can draw walls by clicking an dragging the mouse pointer.
+* User can optionally randomize the walls in the maze and add more walls by dragging the mouse.
+* User can add weights to blocks and can randomize the weights.
+* Users can then choose a speed of the visualization.
+
+## Screen Shot
+
+![algo-viz](https://user-images.githubusercontent.com/54474853/132138137-4a05ead8-74d2-4a87-b763-8f82cfcb3a34.PNG)
+
 
