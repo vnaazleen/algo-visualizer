@@ -67,9 +67,9 @@ class GridLayout extends Component {
 
     gridRender() {
         const b = [];
-        for (let row = 0; row < 27; row++) {
+        for (let row = 0; row < 26; row++) {
             const currRow = [];
-            for (let col = 0; col < 61; col++) {
+            for (let col = 0; col < 60; col++) {
 
                 const val = {
                     row,
@@ -98,9 +98,9 @@ class GridLayout extends Component {
 
     grdRender(r, c) {
         const b = [];
-        for (let row = 0; row < 27; row++) {
+        for (let row = 0; row < 26; row++) {
             const currRow = [];
-            for (let col = 0; col < 61; col++) {
+            for (let col = 0; col < 60; col++) {
 
                 const val = {
                     row,
@@ -132,9 +132,9 @@ class GridLayout extends Component {
 
     gridRerender() {
         const b = [];
-        for (let row = 0; row < 27; row++) {
+        for (let row = 0; row < 26; row++) {
             const currRow = [];
-            for (let col = 0; col < 61; col++) {
+            for (let col = 0; col < 60; col++) {
 
                 const val = {
                     row,
@@ -192,9 +192,9 @@ class GridLayout extends Component {
 
     generateNewGridWithPreviousWalls() {
         const b = [];
-        for (let row = 0; row < 27; row++) {
+        for (let row = 0; row < 26; row++) {
             const currRow = [];
-            for (let col = 0; col < 61; col++) {
+            for (let col = 0; col < 60; col++) {
                 const boxes = this.state.boxes;
                 const node = boxes[row][col];
                 const val = {
@@ -225,9 +225,9 @@ class GridLayout extends Component {
     randomGridGeneration() {
         const b = []
         if (!this.state.running) {
-            for (let row = 0; row < 27; row++) {
+            for (let row = 0; row < 26; row++) {
                 const c = [];
-                for (let col = 0; col < 61; col++) {
+                for (let col = 0; col < 60; col++) {
                     const ran = Math.floor(Math.random() * 5 + 1);
                     const box = this.state.boxes;
 
@@ -264,9 +264,9 @@ class GridLayout extends Component {
     randomWeightGeneration() {
         const b = []
         if (!this.state.running) {
-            for (let row = 0; row < 27; row++) {
+            for (let row = 0; row < 26; row++) {
                 const c = [];
-                for (let col = 0; col < 61; col++) {
+                for (let col = 0; col < 60; col++) {
                     const ran = Math.floor(Math.random() * 5 + 1);
                     const box = this.state.boxes;
 
