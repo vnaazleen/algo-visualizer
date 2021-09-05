@@ -1,4 +1,4 @@
-import { getAllNodes, getUnvisitedNeighbours, sortNodesByDistance} from './Dijkstra';
+import { getAllNodes, getUnvisitedNeighbours} from './Dijkstra';
 
 export function greedyBFS(grid, start, finish) {
     /** Greedy best first search algorithm*/
@@ -27,6 +27,11 @@ export function greedyBFS(grid, start, finish) {
          }
       });
     }
+}
+
+function sortNodesByDistance(pqueue) {
+    /** Sort's the priority queue nodes by their relative distance from finish node*/
+    pqueue.sort((a, b) => a[1] - b[1]);
 }
 
 function getManhattanDistance(currNode, finishNode) {
