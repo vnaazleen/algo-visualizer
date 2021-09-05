@@ -30,6 +30,4 @@ Visit the web app by [clicking here 🚀](https://algo-visualizer-vvit.netlify.a
 
 ## Screen Shot
 
-![algo-viz](https://user-images.githubusercontent.com/54474853/132138137-4a05ead8-74d2-4a87-b763-8f82cfcb3a34.PNG)
-
-
+![algo-viz](https://user-images.githubusercontent.com/54474853/132138866-1718c61c-364d-4f64-9ce0-d0f3ae1ee692.PNG)
