@@ -22,7 +22,7 @@ class GridLayout extends Component {
             end: [13, 45],
             unchanged: true,
             speed: { slow: 1000, normal: 100, fast: 10 },
-            curSpeed: 10,
+            curSpeed: 10
         }
     }
 
@@ -67,9 +67,9 @@ class GridLayout extends Component {
 
     gridRender() {
         const b = [];
-        for (let row = 0; row < 18; row++) {
+        for (let row = 0; row < 25; row++) {
             const currRow = [];
-            for (let col = 0; col < 53; col++) {
+            for (let col = 0; col < 55; col++) {
 
                 const val = {
                     row,
@@ -98,7 +98,7 @@ class GridLayout extends Component {
 
     grdRender(r, c) {
         const b = [];
-        for (let row = 0; row < 18; row++) {
+        for (let row = 0; row < 20; row++) {
             const currRow = [];
             for (let col = 0; col < 53; col++) {
 
@@ -132,7 +132,7 @@ class GridLayout extends Component {
 
     gridRerender() {
         const b = [];
-        for (let row = 0; row < 18; row++) {
+        for (let row = 0; row < 20; row++) {
             const currRow = [];
             for (let col = 0; col < 53; col++) {
 
@@ -185,7 +185,6 @@ class GridLayout extends Component {
                     if (!node.iswall && !node.strt && !node.end) {
                         document.getElementById(`node-${row}-${col}`).className = '';
                     }
-                    // document.getElementById('display').innerHTML("This Algorithm doesn't support the weights");
                 }
             }
         }
@@ -193,7 +192,7 @@ class GridLayout extends Component {
 
     generateNewGridWithPreviousWalls() {
         const b = [];
-        for (let row = 0; row < 18; row++) {
+        for (let row = 0; row < 20; row++) {
             const currRow = [];
             for (let col = 0; col < 53; col++) {
                 const boxes = this.state.boxes;
@@ -226,7 +225,7 @@ class GridLayout extends Component {
     randomGridGeneration() {
         const b = []
         if (!this.state.running) {
-            for (let row = 0; row < 18; row++) {
+            for (let row = 0; row < 20; row++) {
                 const c = [];
                 for (let col = 0; col < 53; col++) {
                     const ran = Math.floor(Math.random() * 5 + 1);
@@ -265,7 +264,7 @@ class GridLayout extends Component {
     randomWeightGeneration() {
         const b = []
         if (!this.state.running) {
-            for (let row = 0; row < 18; row++) {
+            for (let row = 0; row < 20; row++) {
                 const c = [];
                 for (let col = 0; col < 53; col++) {
                     const ran = Math.floor(Math.random() * 5 + 1);
@@ -645,7 +644,7 @@ class GridLayout extends Component {
             document.getElementById(`node-${row}-${col - 1}`).className = 'gridblock unvisited';
         if (col != 53)
             document.getElementById(`node-${row}-${col + 1}`).className = 'gridblock unvisited';
-        if (row != 18)
+        if (row != 20)
             document.getElementById(`node-${row + 1}-${col}`).className = 'gridblock unvisited';
 
     }
@@ -850,6 +849,6 @@ class GridLayout extends Component {
                 /div>
             )
         }
-    }
+}
 
-    export default GridLayout;
+export default GridLayout;
