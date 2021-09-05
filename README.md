@@ -13,10 +13,7 @@ Visit the web app by [clicking here 🚀](https://algo-visualizer-vvit.netlify.a
 * Greedy Best first search
 * A* search
 * Dijkstra's
-
-## DataStructures
-* Priority Queue
-
+* 
 ## Tech Stack
 * React JS
 * BootStrap
