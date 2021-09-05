@@ -72,28 +72,20 @@ class Header extends Component{
             }
         },100)
         
-        
-        // return this.state.algo;
         event.preventDefault()
     }
 
 
     render( ){
-        const     val = this.props.dijkstra;
+        const val = this.props.dijkstra;
 
         return(
             <div>
                 <Navbar dark expand="md" className="nav-bg">
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                    <NavbarBrand className="ml-auto" href="/">
-                                <img  src= {Img} height="55" alt="Algo-Visualizer" />
+                    <NavbarBrand className="logo">
+                        <img src= {Img} height="55" alt="Algo-Visualizer"/>
                     </NavbarBrand>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                      
 
                     <div className="container row">
@@ -102,7 +94,7 @@ class Header extends Component{
                         <div className="nav">
 
                         <Collapse isOpen={this.state.isNavOpen} className="collapse navbar-collapse">
-                            <Nav className="mr-auto">
+                            <Nav>
                                 <Form onSubmit={this.handleSubmit}>
                                     <NavItem className="navbar-nav">
                                         <FormGroup>
