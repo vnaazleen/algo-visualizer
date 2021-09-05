@@ -43,16 +43,15 @@ class GridLayout extends Component {
         let val = this.gridRender();
         this.setState({
                 boxes: val
-            })
-            // this.updateStyle();
+        })
     }
 
-    change = (va) => {
+    change = (val) => {
         console.log("before state:", this.state);
 
         this.setState({
             changed: true,
-            start: va,
+            start: val,
             unchanged: false
         }, () => {
 
@@ -61,8 +60,6 @@ class GridLayout extends Component {
                 changed: false,
             })
         });
-        console.log(document.getElementById(`node-${this.state.start[0]}-${this.state.start[1]}`));
-        console.log("state ", this.state.start);
     }
 
     gridRender() {
@@ -748,12 +745,10 @@ class GridLayout extends Component {
 
         console.log('start state ::', this.state.start);
 
-        return ( <
-            div >
+        return ( <div >
 
 
-            <
-            Header dijkstra = {
+            <Header dijkstra = {
                 () => this.visualizeDijkstra()
             }
             bfs = {
@@ -789,66 +784,52 @@ class GridLayout extends Component {
             normal = {
                 () => this.normal()
             } >
-            <
-            /Header>
+            </Header>
 
-            <
-            div id = "display" > < /div>
+            <div id = "display" > < /div>
 
 
-            <
-            div className = "grid-container" > {
+            <div className = "grid-container" > {
                 boxes.map((row, pos) => {
                         return ( <
                             div className = "grid-row"
                             key = { `r-${pos}` } > {
                                 row.map((c, pos2) => {
 
-                                        return ( <
-                                            GridBlock chng = {
-                                                { start: this.state.start, func: this.change.bind(this) }
-                                            }
-                                            row = { pos }
-                                            col = { pos2 }
-                                            key = { `${pos}-${pos2}` }
-                                            start = { c.strt }
-                                            end = { c.end }
-                                            startnode = { this.state.start }
-                                            endnode = { this.state.end }
-                                            grdRender = { this.grdRender.bind(this) }
-                                            unchanged = { this.state.unchanged }
-                                            mouseIsPressed = { this.state.isMousePressed }
-                                            iswall = { c.iswall }
-                                            weight = { c.isweight }
+                                        return ( 
+                                          <GridBlock chng = {{ start: this.state.start, func: this.change.bind(this)}}
+                                                    row = { pos }
+                                                    col = { pos2 }
+                                                    key = { `${pos}-${pos2}` }
+                                                    start = { c.strt }
+                                                    end = { c.end }
+                                                    startnode = { this.state.start }
+                                                    endnode = { this.state.end }
+                                                    grdRender = { this.grdRender.bind(this) }
+                                                    unchanged = { this.state.unchanged }
+                                                    mouseIsPressed = { this.state.isMousePressed }
+                                                    iswall = { c.iswall }
+                                                    weight = { c.isweight }
 
-                                            onMouseDown = {
-                                                (row, col) => this.handleMouseDown(row, col)
-                                            }
-                                            onMouseEnter = {
-                                                (row, col) => this.handleMouseEnter(row, col)
-                                            }
-                                            onMouseUp = {
-                                                () => this.handleMouseUp()
-                                            }
+                                                    onMouseDown = {
+                                                      (row, col) => this.handleMouseDown(row, col)
+                                                    }
+                                                    onMouseEnter = {
+                                                        (row, col) => this.handleMouseEnter(row, col)
+                                                    }
+                                                    onMouseUp = {
+                                                        () => this.handleMouseUp()
+                                                    }
 
-                                            >
-                                            <
-                                            /GridBlock>)
+                                          ></GridBlock>)
                                         })
 
-                                } <
-                                /div>
-                            );
-                        })
-                }
-
-                <
-                /div>
-
-                <
-                /div>
-            )
-        }
+                                } 
+                              </div>
+                            );})
+            } </div>
+          </div>
+      )}
 }
 
 export default GridLayout;
