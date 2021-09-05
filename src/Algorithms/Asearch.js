@@ -1,4 +1,4 @@
-import {PriorityQueue} from '../Components/PriorityQueue';
+import {PriorityQueue} from '../DataStructures/PriorityQueue';
 export function aSearch(grid,start,finish){
 
     let op = [];
