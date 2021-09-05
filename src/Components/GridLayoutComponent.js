@@ -67,9 +67,9 @@ class GridLayout extends Component {
 
     gridRender() {
         const b = [];
-        for (let row = 0; row < 25; row++) {
+        for (let row = 0; row < 27; row++) {
             const currRow = [];
-            for (let col = 0; col < 55; col++) {
+            for (let col = 0; col < 61; col++) {
 
                 const val = {
                     row,
