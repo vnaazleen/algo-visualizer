@@ -27,4 +27,5 @@ Visit the web app by [clicking here 🚀](https://algo-visualizer-vvit.netlify.a
 
 ## Screen Shot
 
-![algo-viz](https://user-images.githubusercontent.com/54474853/132138866-1718c61c-364d-4f64-9ce0-d0f3ae1ee692.PNG)
+![screencapture-algo-visualizer-vvit-netlify-app-2021-09-06-19_06_06](https://user-images.githubusercontent.com/54474853/132225613-9ecf49b8-49f8-4d22-8c80-5476cab07281.png)
+
