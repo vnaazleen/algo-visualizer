@@ -175,9 +175,12 @@ class GridLayout extends Component {
                     document.getElementById(`node-${row}-${col}`).className = 'end';
                 }
                 if (st) {
-                    if (!node.iswall && !node.isweight && !node.strt && !node.end) {
+                    if (!node.strt && !node.end) 
                         document.getElementById(`node-${row}-${col}`).className = '';
-                    }
+                    if(node.isweight)
+                        document.getElementById(`node-${row}-${col}`).className += ' node-weight ';
+                    if(node.iswall)
+                        document.getElementById(`node-${row}-${col}`).className += 'node-wall';
                 } else {
                     if (!node.iswall && !node.strt && !node.end) {
                         document.getElementById(`node-${row}-${col}`).className = '';
@@ -187,7 +190,7 @@ class GridLayout extends Component {
         }
     }
 
-    generateNewGridWithPreviousWalls() {
+    generateNewGridWithPreviousWalls(st) {
         const b = [];
         for (let row = 0; row < 23; row++) {
             const currRow = [];
@@ -205,8 +208,8 @@ class GridLayout extends Component {
                     aDis: 0,
                     aEndDis: 0,
                     isVisited: node.iswall ? node.isVisited : false,
-                    isweight: false,
-                    cost: 0,
+                    isweight: st ? node.isweight :false,
+                    cost:  st ? node.cost : 0,
                     previousNode: null,
                     iswall: node.iswall
                 };
@@ -267,7 +270,7 @@ class GridLayout extends Component {
                     const ran = Math.floor(Math.random() * 5 + 1);
                     const box = this.state.boxes;
 
-
+                    console.log(ran);
                     const node = box[row][col];
 
                     const val = {
@@ -301,14 +304,15 @@ class GridLayout extends Component {
 
         if (num === 1) {
             return false
-        } else {
-            for (let i = 2; i < this.prime; i++) {
+        } else 
+        {
+            for (let i = 2; i < this.prime ; i++) {
                 if (num % i === 0) {
-                    return false
+                    return false;
                 }
             }
         }
-        return true
+        return true;
     }
 
     even(num) {
@@ -339,6 +343,7 @@ class GridLayout extends Component {
         this.setState({
             boxes: val
         })
+        console.log(val+" in random weight");
     }
 
 
@@ -372,8 +377,8 @@ class GridLayout extends Component {
 
     }
 
-    clearGridForNewAlgo() {
-        let val = this.generateNewGridWithPreviousWalls();
+    clearGridForNewAlgo(st) {
+        let val = this.generateNewGridWithPreviousWalls(st);
         this.setState({
             boxes: val
         })
@@ -510,7 +515,7 @@ class GridLayout extends Component {
     visualizeDijkstra() {
         if (this.state.boxes !== []) {
             this.clearStyles(true);
-            this.clearGridForNewAlgo();
+            this.clearGridForNewAlgo(true);
         }
 
 
@@ -600,7 +605,7 @@ class GridLayout extends Component {
     visuaizeGBFS() {
         if (this.state.boxes !== []) {
             this.clearStyles(true);
-            this.clearGridForNewAlgo();
+            this.clearGridForNewAlgo(true);
         }
         console.log('Started gbfs');
         const { boxes } = this.state;
@@ -616,7 +621,7 @@ class GridLayout extends Component {
     visualizeaSearch() {
         if (this.state.boxes !== []) {
             this.clearStyles(true);
-            this.clearGridForNewAlgo();
+            this.clearGridForNewAlgo(true);
         }
 
         const { boxes } = this.state;
@@ -786,7 +791,7 @@ class GridLayout extends Component {
             } >
             </Header>
 
-            <div id = "display" > < /div>
+            <div id = "display" > 
 
 
             <div className = "grid-container" > {
@@ -800,7 +805,7 @@ class GridLayout extends Component {
                                           <GridBlock chng = {{ start: this.state.start, func: this.change.bind(this)}}
                                                     row = { pos }
                                                     col = { pos2 }
-                                                    key = { `${pos}-${pos2}` }
+                                                    key = { `${pos}-${pos2}` }z
                                                     start = { c.strt }
                                                     end = { c.end }
                                                     startnode = { this.state.start }
@@ -810,6 +815,7 @@ class GridLayout extends Component {
                                                     mouseIsPressed = { this.state.isMousePressed }
                                                     iswall = { c.iswall }
                                                     weight = { c.isweight }
+                                                    cost = {c.cost}
 
                                                     onMouseDown = {
                                                       (row, col) => this.handleMouseDown(row, col)
@@ -829,6 +835,7 @@ class GridLayout extends Component {
                             );})
             } </div>
           </div>
+        </div>
       )}
 }
 
