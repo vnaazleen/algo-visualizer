@@ -7,7 +7,9 @@ export function greedyBFS(grid, start, finish) {
     const pqueue = [];
     pqueue.push([start, -1]);
 
-    while(pqueue.length > 0) {
+    while(pqueue.length >=0 ) {
+      if(pqueue.length === 0) return visitedNodes;
+
       sortNodesByDistance(pqueue);
       const node_dist = pqueue.shift();
       const nearestNode = node_dist[0];

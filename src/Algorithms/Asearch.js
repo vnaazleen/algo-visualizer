@@ -16,7 +16,9 @@ export function aSearch(grid, start, finish) {
     let closed = new PriorityQueue();
     let visitedNodesInOrder = []
 
-    while (pqueue.size() > 0) {
+    while (pqueue.size() >= 0) {
+
+        if(pqueue.size() === 0) return close;
 
         pqueue.print()
 

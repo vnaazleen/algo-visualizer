@@ -535,9 +535,6 @@ class GridLayout extends Component {
 
         this.animateDijkstra(visitedNodes, shortestPath);
 
-        console.log("running true");
-
-        console.log('running false')
     }
 
     visuaizeBFS() {
@@ -578,14 +575,18 @@ class GridLayout extends Component {
         console.log('bbfs');
         console.log(visitedNodes);
 
-        const shortestPath2 = getNodesInShortestPathOrderBbfs(visitedNodes[1]);
-        const shortestPath1 = getNodesInShortestPathOrderBbfs(visitedNodes[2]);
+        // if(visitedNodes !== false)
+        //  {
+            const shortestPath2 = getNodesInShortestPathOrderBbfs(visitedNodes[1]);
+            const shortestPath1 = getNodesInShortestPathOrderBbfs(visitedNodes[2]);
 
 
-        console.log(shortestPath1, shortestPath2);
+            console.log(shortestPath1, shortestPath2);
 
-        this.animateBbfs(visitedNodes[0], shortestPath1, shortestPath2);
+            this.animateBbfs(visitedNodes[0], shortestPath1, shortestPath2);
 
+        //  }   
+        
     }
 
     visuaizeDFS() {

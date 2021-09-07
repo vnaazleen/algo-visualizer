@@ -1,5 +1,3 @@
-import React from 'react'
-import bfs from './bfs'
 import { getAllNodes } from './Dijkstra';
 
 export function biDirectionalBfs(grid, start, finish) {
@@ -33,19 +31,28 @@ export function biDirectionalBfs(grid, start, finish) {
 
     let neighborsUnvis = [];
 
-    while (queueForward !== [] && queueBackward !== []) {
+    while (queueForward.length>=0 && queueBackward.length>=0) {
+
+        if(queueForward.length === 0 || queueBackward.length === 0) return false;
 
         const currentForwardNode = queueForward.shift(); /* shift() -> pops & returns front node in queue*/
         const currentBackwardNode = queueBackward.shift();
 
+
+        
+
         const neighsForward = getUnvisitedNeighboursBbfs(currentForwardNode, grid);
         const neighsBackward = getUnvisitedNeighboursBbfs(currentBackwardNode, grid);
+
+        if(neighsForward.length === 0 || neighsBackward === 0 ) return false;
 
         curForwardLevelNodes = [];
         curBackwardLevelNodes = [];
 
-        updateUnvisitedNeighbors(currentForwardNode, grid);
+        let val = updateUnvisitedNeighbors(currentForwardNode, grid);
         updateUnvisitedNeighbors(currentBackwardNode, grid);
+
+        // if(val === 2) return [neighbors, neighsForward[i], ];
 
         for (let i = 0; i < neighsForward.length || i < neighsBackward.length; i++) {
 
@@ -53,6 +60,9 @@ export function biDirectionalBfs(grid, start, finish) {
             if (i < neighsForward.length) {
 
                 let sur = getSurroundings(neighsForward[i], grid);
+                // if (neighsForward[i].isVisited === true) return [neighbors, neighsForward[i], sur[0]];
+                // if(sur.length === 0) 
+
                 for (let j = 0; j < sur.length; j++) {
 
                     // if forward nodes meet backward nodes, the we found a path & return it
@@ -74,6 +84,8 @@ export function biDirectionalBfs(grid, start, finish) {
             // visits all the currentBackwardNodes neighbours, if any
             if (i < neighsBackward.length) {
                 let sur = getSurroundings(neighsBackward[i], grid);
+                // if(sur.length === 0) return [neighbors, neighsBackward[i], sur[0]];
+
                 for (let j = 0; j < sur.length; j++) {
 
                     // if forward nodes meet backward nodes, the we found a path & return it
@@ -95,12 +107,15 @@ export function biDirectionalBfs(grid, start, finish) {
         }
         neighbors = [...neighbors, ...curForwardLevelNodes, ...curBackwardLevelNodes]
     }
+
+    // if ( queueForward === [] ) return [neighbors,neighbors];
+    // && queueBackward !== [];
 }
 
 function updateUnvisitedNeighbors(node, grid) {
     /** Updates the distances of unvisited nodes */
     const unvisitedNeighbors = getUnvisitedNeighboursBbfs(node, grid);
-
+    // if(unvisitedNeighbors.length ===0 ) return 2;  
     for (const neighbor of unvisitedNeighbors) {
         neighbor.previousNode = node;
     }

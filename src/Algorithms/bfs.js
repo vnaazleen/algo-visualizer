@@ -15,7 +15,9 @@ export function bfs (grid,start,finish) {
 
     while(!!allnodes.length){
 
+        if(queue.length === 0) return neighbors;
         const current = queue.shift();
+        
         const neigh = getUnvisitedNeighbours(current,grid);
         short=[]
 

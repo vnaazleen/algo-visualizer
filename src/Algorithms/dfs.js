@@ -8,7 +8,9 @@ export function dfs(grid, start, finish) {
     stack.push(start);
     start.isVisited = true;
 
-    while(stack.length > 0) {
+    while(stack.length >= 0) {
+        if(stack.length === 0) return visitedNodes;
+
         const current = stack.pop();
         const neighbours = getUnvisitedNeighbours(current,grid);
         updateUnvisitedNeighbors(current,grid);
