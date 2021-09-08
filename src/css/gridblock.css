@@ -14,7 +14,7 @@
 
 .start {
 	position: relative;
-	background-image: url(http://cdn.onlinewebfonts.com/svg/download_71708.png);
+	background-image: url("../images/start.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -32,7 +32,7 @@
 
 .end {
 	position: relative;
-	background-image: url(http://cdn.onlinewebfonts.com/svg/img_208778.png);
+	background-image: url("../images/end.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -45,7 +45,6 @@
 	animation-fill-mode: forwards;
 	animation-play-state: running;
 }
-
 
 .grid-row {
 	margin: 0px !important;
@@ -73,7 +72,7 @@
 }
 .node-weight {
 	position: relative;
-	background-image: url(https://cdn0.iconfinder.com/data/icons/sports-and-games-1-1/65/37-512.png);
+	background-image: url("../images/weight.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -163,8 +162,8 @@
 	color: cornsilk;
 }
 
-
-.btn-1, .btn-2 {
+.btn-1,
+.btn-2 {
 	margin-left: 50px;
 	display: inline-block;
 	background-color: rgb(0, 47, 76);

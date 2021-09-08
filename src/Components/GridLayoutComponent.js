@@ -575,8 +575,8 @@ class GridLayout extends Component {
         console.log('bbfs');
         console.log(visitedNodes);
 
-        // if(visitedNodes !== false)
-        //  {
+        if(visitedNodes !== false)
+         {
             const shortestPath2 = getNodesInShortestPathOrderBbfs(visitedNodes[1]);
             const shortestPath1 = getNodesInShortestPathOrderBbfs(visitedNodes[2]);
 
@@ -585,7 +585,11 @@ class GridLayout extends Component {
 
             this.animateBbfs(visitedNodes[0], shortestPath1, shortestPath2);
 
-        //  }   
+         }
+         else
+         {
+        
+         }   
         
     }
 
