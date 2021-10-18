@@ -44,7 +44,7 @@ export function biDirectionalBfs(grid, start, finish) {
         const neighsForward = getUnvisitedNeighboursBbfs(currentForwardNode, grid);
         const neighsBackward = getUnvisitedNeighboursBbfs(currentBackwardNode, grid);
 
-        if(neighsForward.length === 0 || neighsBackward === 0 ) return false;
+        // if(neighsForward.length === 0 || neighsBackward === 0 ) return false;
 
         curForwardLevelNodes = [];
         curBackwardLevelNodes = [];
